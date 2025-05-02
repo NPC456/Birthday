@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Birthday Countdown</title>
+  <style>
+    /* Base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Comic Sans MS', sans-serif;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      background: linear-gradient(to bottom, #fbcfe8, #f9a8d4, #ec4899);
+    }
+
+    /* Pinkish overlay for sunset tint */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(255, 192, 203, 0.4), rgba(138, 43, 226, 0.4));
+      z-index: 0;
+    }
+
+    /* Floating Emojis */
+    .floating-emoji {
+      position: absolute;
+      font-size: 1.5rem;
+      opacity: 0.7;
+      animation: float 10s infinite ease-in-out;
+      user-select: none;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes float {
+      0%   { transform: translateY(0) translateX(0) rotate(0deg); }
+      50%  { transform: translateY(-30px) translateX(15px) rotate(15deg); }
+      100% { transform: translateY(0) translateX(0) rotate(0deg); }
+    }
+
+    /* Countdown Container */
+    .countdown-container {
+  position: relative;
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.6);  /* Increased opacity */
+  border-radius: 20px;
+  padding: 30px 40px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2);  /* Added shadow */
+  backdrop-filter: blur(15px);
+  text-align: center;
+  max-width: 600px;
+}
+
+
+    h1 {
+      font-family: 'French Script MT', sans-serif;
+      font-size: 2.5rem;
+      color: #000000;
+      margin-bottom: 30px;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .time-grid {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .time-box {
+      background-color: rgba(255, 255, 255, 0.25);
+      border-radius: 15px;
+      padding: 20px 15px;
+      width: 100px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .time-value {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #fc00b9;
+      text-shadow: 0 2px 3px rgba(0,0,0,0.3);
+    }
+
+    .time-label {
+      margin-top: 8px;
+      font-size: 0.75rem;
+      color: #ff00d4;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .celebrate {
+      font-size: 2rem;
+      color: #fff;
+      animation: pulse 1s infinite alternate;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.1); }
+    }
+
+    /* Mute/Unmute Button */
+    .mute-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Emojis -->
+  <div class="floating-emoji" style="top: 10%; left: 20%;">💕</div>
+  <div class="floating-emoji" style="top: 30%; left: 80%;">✨</div>
+  <div class="floating-emoji" style="top: 50%; left: 10%;">💖</div>
+  <div class="floating-emoji" style="top: 70%; left: 60%;">💫</div>
+  <div class="floating-emoji" style="top: 80%; left: 40%;">🌸</div>
+
+  <!-- Countdown Container -->
+  <div class="countdown-container">
+    <h1>🎀 Birthday Countdown 🎂</h1>
+    <div id="countdown" class="time-grid"></div>
+  </div>
+
+  <!-- Mute/Unmute Button -->
+  <button class="mute-button" onclick="toggleMute()">Mute</button>
+
+  <!-- Audio for Background Music -->
+  <audio id="background-music" autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Countdown Script -->
+  <script>
+    const countdownEl = document.getElementById("countdown");
+    const birthday = new Date("2025-12-25T00:00:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = birthday - now;
+
+      if (diff <= 0) {
+        countdownEl.innerHTML = '<div class="celebrate">🎈 Happy Birthday! 🎉</div>';
+        clearInterval(interval);
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownEl.innerHTML = `
+        ${createTimeBox(days, 'Days')}
+        ${createTimeBox(hours, 'Hours')}
+        ${createTimeBox(minutes, 'Minutes')}
+        ${createTimeBox(seconds, 'Seconds')}
+      `;
+    }
+
+    function createTimeBox(value, label) {
+      return `
+        <div class="time-box">
+          <div class="time-value">${value}</div>
+          <div class="time-label">${label}</div>
+        </div>
+      `;
+    }
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+
+    // Mute/Unmute Functionality
+    const audioElement = document.getElementById('background-music');
+    let isMuted = false;
+
+    function toggleMute() {
+      if (isMuted) {
+        audioElement.muted = false;
+        document.querySelector('.mute-button').textContent = 'Mute';
+      } else {
+        audioElement.muted = true;
+        document.querySelector('.mute-button').textContent = 'Unmute';
+      }
+      isMuted = !isMuted;
+    }
+  </script>
+</body>
+</html>
