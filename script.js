@@ -190,11 +190,11 @@ style.textContent = `
   .time-box {
     background: #ffffff;
     border-radius: 15px;
-    padding: 15px 20px;  
-    height: 10vh;
-    width: 10vh;
+    padding: 10px 15px;  
+    height: 10vw;
+    width: 10vw;
     text-align: center;
-    box-shadow: 0 4px 10px rgb(253, 125, 236);
+    box-shadow: 0 4vw 10vw rgb(253, 125, 236);
     outline: 2px solid #fe5aa7;
   }
 
