@@ -169,9 +169,9 @@ style.textContent = `
     position: absolute;
     top: -20px;
     right: -20px;
-    font-size: 2rem;
+    font-size: 4rem;
     opacity: 0;
-    transform: scale(0);
+    transform: scale(3);
     transition: all 1s ease;
   }
 
@@ -191,8 +191,8 @@ style.textContent = `
     background: #ffffff;
     border-radius: 15px;
     padding: 10px 15px;  
-    height: 12vw;
-    width: 12vw;
+    height: 14vw;
+    width: 14vw;
     text-align: center;
     box-shadow: 0 4px 10px rgb(253, 125, 236);
     outline: 2px solid #fe5aa7;
