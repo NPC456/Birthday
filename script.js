@@ -167,8 +167,8 @@ style.textContent = `
 
   #ribbon {
     position: absolute;
-    top: -30px;
-    right: -30px;
+    top: 0px;
+    right: 0px;
     font-size: 4rem;
     opacity: 0;
     transform: scale(0);
@@ -177,7 +177,7 @@ style.textContent = `
 
   #ribbon.reveal {
     opacity: 1;
-    transform: scale(4);
+    transform: scale(3.5);
   }
 
   #countdown {
