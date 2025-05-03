@@ -169,7 +169,7 @@ style.textContent = `
     position: absolute;
     top: 0px;
     right: 0px;
-    font-size: 4rem;
+    font-size: 2rem;
     opacity: 0;
     transform: scale(0);
     transition: all 1s ease;
@@ -190,22 +190,69 @@ style.textContent = `
   .time-box {
     background: #ffffff;
     border-radius: 15px;
-    padding: 10px 15px;  
+    padding: 15px 20px;
     height: 14vw;
     width: 14vw;
     text-align: center;
     box-shadow: 0 4px 10px rgb(253, 125, 236);
     outline: 2px solid #fe5aa7;
+    display: flex; /* Use flexbox for positioning */
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center; /* Center elements vertically */
+    align-items: center; /* Center elements horizontally */
+    position: relative; /* Enable absolute positioning for child elements */
   }
 
   .time-value {
-    font-size: 2rem;
+    font-size: 1.5rem; /* Increase font size for better visibility */
     font-weight: bold;
+    position: absolute; /* Allow precise positioning */
+    top: 30%; /* Adjust vertical position */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center the element */
   }
 
   .time-label {
     font-size: 1rem;
     color: #444;
+    position: absolute; /* Allow precise positioning */
+    bottom: 10%; /* Adjust vertical position */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center the element */
+  }
+
+  @media (max-width: 768px) {
+    .time-box {
+      height: 18vw; /* Adjust height for smaller screens */
+      width: 18vw; /* Adjust width for smaller screens */
+    }
+
+    .time-value {
+      font-size: 1.2rem; /* Adjust font size for smaller screens */
+      top: 25%; /* Adjust vertical position */
+    }
+
+    .time-label {
+      font-size: 0.9rem; /* Adjust font size for smaller screens */
+      bottom: 8%; /* Adjust vertical position */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .time-box {
+      height: 22vw; /* Adjust height for very small screens */
+      width: 22vw; /* Adjust width for very small screens */
+    }
+
+    .time-value {
+      font-size: 1rem; /* Adjust font size for very small screens */
+      top: 20%; /* Adjust vertical position */
+    }
+
+    .time-label {
+      font-size: 0.8rem; /* Adjust font size for very small screens */
+      bottom: 5%; /* Adjust vertical position */
+    }
   }
 
   .extra-message-box {
@@ -245,6 +292,142 @@ style.textContent = `
       transform: translate(-50%, -50%);
       opacity: 0;
     }
+  }
+
+  .reveal-box {
+    position: relative;
+    width: 40vw; /* Responsive width */
+    max-width: 300px; /* Limit max width */
+    height: 20vw; /* Responsive height */
+    max-height: 150px; /* Limit max height */
+    margin: 20px auto;
+    perspective: 1000px; /* Enable 3D perspective */
+  }
+
+  .reveal-box-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+    cursor: pointer;
+  }
+
+  .reveal-box-front, .reveal-box-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5vw; /* Responsive font size */
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .reveal-box-front {
+    background:rgb(250, 198, 250);
+    color: #fff;
+  }
+
+  .reveal-box-back {
+    background:rgb(255, 247, 217);
+    color:rgb(86, 45, 234);
+    transform: rotateX(180deg); /* Flip vertically */
+  }
+
+  .reveal-box.flipped .reveal-box-inner {
+    transform: rotateX(180deg); /* Flip vertically */
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .reveal-box {
+      width: 60vw; /* Adjust width for smaller screens */
+      height: 30vw; /* Adjust height for smaller screens */
+    }
+
+    .reveal-box-front, .reveal-box-back {
+      font-size: 3vw; /* Adjust font size for smaller screens */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .reveal-box {
+      width: 80vw; /* Adjust width for very small screens */
+      height: 40vw; /* Adjust height for very small screens */
+    }
+
+    .reveal-box-front, .reveal-box-back {
+      font-size: 4vw; /* Adjust font size for very small screens */
+    }
+  }
+
+  .reveal-box-front {
+    background: linear-gradient(135deg,hsl(287, 90.70%, 57.80%),rgb(216, 62, 236) ,rgb(230, 62, 169)); /* Gradient colors */
+    background-size: 200% 200%; /* Larger background for animation */
+    color: #fff;
+    animation: shineEffect 3s linear infinite; /* Add animation */
+  }
+
+  @keyframes shineEffect {
+    0% {
+      background-position: 0% 50%; /* Start position */
+    }
+    50% {
+      background-position: 100% 50%; /* Middle position */
+    }
+    100% {
+      background-position: 0% 50%; /* End position */
+    }
+  }
+
+  .reveal-box-front {
+    background: linear-gradient(135deg,rgb(255, 4, 217),rgb(229, 43, 239),rgb(179, 0, 210)); /* Gradient colors */
+    background-size: 200% 200%; /* Larger background for animation */
+    color: #fff;
+    animation: shineEffect 3s linear infinite; /* Add animation */
+  }
+
+  @keyframes shineEffect {
+    0% {
+      background-position: 0% 50%; /* Start position */
+    }
+    50% {
+      background-position: 100% 50%; /* Middle position */
+    }
+    100% {
+      background-position: 0% 50%; /* End position */
+    }
+  }
+
+  @keyframes gradientMove {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  #ribbon {
+    position: absolute;
+    bottom: 0px; /* Move to the bottom */
+    right: 0px; /* Keep it on the right */
+    font-size: 2rem;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 1s ease;
+  }
+
+  #ribbon.reveal {
+    opacity: 1;
+    transform: scale(2);
   }
 `;
 
@@ -290,19 +473,20 @@ container.appendChild(extraMessageBox);
 
 // Create a button below the countdown box
 const nextButton = document.createElement('button');
-nextButton.textContent = "Show Next";
+nextButton.textContent = "For You✨ ▶️";
 nextButton.style.marginTop = "40px";
 nextButton.style.padding = "10px 20px";
 nextButton.style.fontSize = "1rem";
 nextButton.style.cursor = "pointer";
 nextButton.style.border = "none";
 nextButton.style.borderRadius = "5px";
-nextButton.style.backgroundColor = "#fe5aa7";
+nextButton.style.background = "linear-gradient(90deg, #6a0dad, #ff69b4, #ff1493, #6a0dad)";
+nextButton.style.backgroundSize = "200% 200%";
 nextButton.style.color = "#fff";
-nextButton.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.2)";
-nextButton.style.transition = "background-color 0.3s ease";
-nextButton.onmouseover = () => nextButton.style.backgroundColor = "#e04a8c";
-nextButton.onmouseout = () => nextButton.style.backgroundColor = "#fe5aa7";
+nextButton.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.3)";
+nextButton.style.animation = "gradientMove 3s linear infinite";
+nextButton.onmouseover = () => nextButton.style.background = "linear-gradient(90deg, #5a009d, #3a0062)";
+nextButton.onmouseout = () => nextButton.style.background = "linear-gradient(90deg, #6a0dad, #4b0082)";
 
 // Style the button and hide it initially
 nextButton.style.display = "block"; // Reserve space for the button
@@ -369,7 +553,7 @@ secondContainerContent.style.lineHeight = '1.5'; // Adjust line height for reada
 const happyBirthdayText = document.createElement('h1');
 happyBirthdayText.textContent = "Happy Birthday!";
 happyBirthdayText.style.fontSize = '5vw'; // Use viewport width for font size
-happyBirthdayText.style.color = '#EF0BBD';
+happyBirthdayText.style.color = '#ff3053';
 happyBirthdayText.style.marginBottom = '2%'; // Use percentage for spacing
 happyBirthdayText.style.marginTop = '0px'; // Move closer to the top
 secondContainerContent.appendChild(happyBirthdayText);
@@ -385,13 +569,31 @@ secondContainerContent.appendChild(emojisLine);
 const cutiepieText = document.createElement('h2');
 cutiepieText.textContent = "To My Cutiepie...";
 cutiepieText.style.fontSize = '4vw'; // Use viewport width for font size
-cutiepieText.style.color = '#F524C7';
+cutiepieText.style.color = '#fa0c68';
 cutiepieText.style.marginTop = '1%'; // Use percentage for spacing
 cutiepieText.style.marginBottom = '2%'; // Use percentage for spacing
 secondContainerContent.appendChild(cutiepieText);
 
 // Append the content to the second container
 secondContainer.appendChild(secondContainerContent);
+
+// Create the "Tap to Reveal" box
+const revealBox = document.createElement('div');
+revealBox.className = 'reveal-box';
+revealBox.innerHTML = `
+  <div class="reveal-box-inner">
+    <div class="reveal-box-front">Tap to Reveal</div>
+    <div class="reveal-box-back">You are amazing! 🎉</div>
+  </div>
+`;
+
+// Append the "Tap to Reveal" box to the second container
+secondContainerContent.appendChild(revealBox);
+
+// Add event listener for the flip animation
+revealBox.addEventListener('click', () => {
+  revealBox.classList.toggle('flipped');
+});
 
 // Floating Emojis behind the page
 const emojis = ['💖','💗','🔷', '💖', '🌟','🥟'];
@@ -466,7 +668,7 @@ muteButton.addEventListener("click", () => {
 document.body.appendChild(muteButton);
 
 // Logic
-const birthday = new Date("2025-06-03T21:24:00");
+const birthday = new Date("2025-04-03T21:24:00");
 
 function createTimeBox(value, label) {
   return `
