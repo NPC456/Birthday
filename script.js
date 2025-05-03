@@ -177,7 +177,7 @@ style.textContent = `
 
   #ribbon.reveal {
     opacity: 1;
-    transform: scale(3.5);
+    transform: scale(2);
   }
 
   #countdown {
