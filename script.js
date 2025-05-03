@@ -191,10 +191,10 @@ style.textContent = `
     background: #ffffff;
     border-radius: 15px;
     padding: 10px 15px;  
-    height: 10vw;
-    width: 10vw;
+    height: 12vw;
+    width: 12vw;
     text-align: center;
-    box-shadow: 0 1vw 2vw rgb(253, 125, 236);
+    box-shadow: 0 4px 10px rgb(253, 125, 236);
     outline: 2px solid #fe5aa7;
   }
 
