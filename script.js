@@ -167,17 +167,17 @@ style.textContent = `
 
   #ribbon {
     position: absolute;
-    top: -20px;
-    right: -20px;
+    top: -30px;
+    right: -30px;
     font-size: 4rem;
     opacity: 0;
-    transform: scale(3);
+    transform: scale(0);
     transition: all 1s ease;
   }
 
   #ribbon.reveal {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(4);
   }
 
   #countdown {
