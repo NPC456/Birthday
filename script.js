@@ -464,7 +464,7 @@ muteButton.addEventListener("click", () => {
 document.body.appendChild(muteButton);
 
 // Logic
-const birthday = new Date("2025-05-03T21:24:00");
+const birthday = new Date("2025-06-03T21:24:00");
 
 function createTimeBox(value, label) {
   return `
