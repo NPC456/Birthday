@@ -283,6 +283,7 @@ container.appendChild(countdownEl);
 const extraMessageBox = document.createElement('div');
 extraMessageBox.className = 'extra-message-box';
 extraMessageBox.innerHTML = "Just a little more....<br>a special gift for my favourite person";
+extraMessageBox.style.fontSize = "1rem";
 container.appendChild(extraMessageBox);
 
 // Create a button below the countdown box
