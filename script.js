@@ -64,14 +64,51 @@ style.textContent = `
 
   #loading-screen {
     position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: #fff8fb;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1); /* Gradient background */
+    background-size: 400% 400%;
+    animation: gradientFlow 6s ease infinite; /* Animate the gradient */
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
     z-index: 9999;
+    overflow: hidden;
+  }
+
+  .loading-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: bounce 1.5s infinite; /* Add bounce animation */
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px); /* Move up */
+    }
+  }
+
+  .loading-dots {
+    display: inline-block;
+    font-size: 2rem;
+    color: #fff;
+    animation: fadeDots 1.5s infinite; /* Add fade animation for dots */
+  }
+
+  @keyframes fadeDots {
+    0%, 100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 1;
+    }
   }
 
   @keyframes fallAndBounce {
@@ -429,6 +466,39 @@ style.textContent = `
     opacity: 1;
     transform: scale(2);
   }
+
+  .reveal-box {
+    position: relative;
+    width: 50vw; /* Adjust width (e.g., 50% of the viewport width) */
+    max-width: 400px; /* Set a maximum width */
+    height: 25vw; /* Adjust height (e.g., 25% of the viewport width) */
+    max-height: 200px; /* Set a maximum height */
+    margin: 20px auto;
+    perspective: 1000px; /* Enable 3D perspective */
+  }
+
+  .reveal-box-inner {
+    position: absolute;
+    width: 80%; /* Match the size of the parent */
+    height: 100%; /* Match the size of the parent */
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+    cursor: pointer;
+  }
+
+  .reveal-box-front, .reveal-box-back {
+    position: absolute;
+    width: 80%; /* Match the size of the parent */
+    height: 100%; /* Match the size of the parent */
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5vw; /* Adjust font size for responsiveness */
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 document.head.appendChild(style);
@@ -438,7 +508,10 @@ const loadingScreen = document.createElement('div');
 loadingScreen.id = 'loading-screen';
 const loadingText = document.createElement('div');
 loadingText.className = 'loading-text';
-loadingText.textContent = 'Loading...';
+loadingText.innerHTML = `
+  <span class="loading-text">Loading</span>
+  <span class="loading-dots">...</span>
+`;
 loadingScreen.appendChild(loadingText);
 document.body.appendChild(loadingScreen);
 
@@ -582,8 +655,8 @@ const revealBox = document.createElement('div');
 revealBox.className = 'reveal-box';
 revealBox.innerHTML = `
   <div class="reveal-box-inner">
-    <div class="reveal-box-front">Tap to Reveal</div>
-    <div class="reveal-box-back">You are amazing! 🎉</div>
+    <div class="reveal-box-front">Tap to Reveal Your Card</div>
+    <div class="reveal-box-back">Just wanted to tell you that- you are my favourite person. <br>Whenever i talk to you my day beocmes Good, even it is for few minutes....<br>I Hope your birthday is full of Love and Magic! which make you smile.</div>
   </div>
 `;
 
