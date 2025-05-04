@@ -654,9 +654,15 @@ revealBox.className = 'reveal-box';
 revealBox.innerHTML = `
   <div class="reveal-box-inner">
     <div class="reveal-box-front">Tap to Reveal Your Card</div>
-    <div class="reveal-box-back">Just wanted to tell you that- you are my favourite person. Whenever i talk to you my day becomes Better I Hope your birthday is full of Love, Magic and Happiness! which make you smile.
-</div>
+    <div class="reveal-box-back"></div>
   </div>
+`;
+
+// Change the color of the reveal box back text
+const revealBoxBack = revealBox.querySelector('.reveal-box-back');
+revealBoxBack.innerHTML = `
+  <span style="color: violet;">Just wanted to tell you that- you are my favourite person. Whenever I talk to you my day becomes Better</span><br>
+  <span style="color: #ff1493;">I Hope your birthday is full of Love, Magic and Happiness! which make you smile ❣️</span>
 `;
 
 // Style the reveal box for flexible positioning and shape
@@ -677,7 +683,6 @@ revealBoxFront.style.lineHeight = '1.5'; // Adjust line height for readability
 revealBoxFront.style.fontSize = '1rem'; // Adjust font size for better fit
 
 // Style the back text of the reveal card
-const revealBoxBack = revealBox.querySelector('.reveal-box-back');
 revealBoxBack.style.padding = '10px'; // Add padding for spacing
 revealBoxBack.style.overflow = 'hidden'; // Prevent text overflow
 revealBoxBack.style.textAlign = 'center'; // Center-align text
@@ -691,6 +696,33 @@ secondContainerContent.appendChild(revealBox);
 revealBox.addEventListener('click', () => {
   revealBox.classList.toggle('flipped');
 });
+
+// Add additional texts below the reveal box
+const additionalText1 = document.createElement('p');
+additionalText1.textContent = "Wishing you all the happiness in the world!";
+additionalText1.style.fontSize = '1.2rem';
+additionalText1.style.textAlign = 'center';
+additionalText1.style.marginTop = '20px';
+additionalText1.style.color = '#ff1493'; // Reddish pink
+
+const additionalText2 = document.createElement('p');
+additionalText2.textContent = "May your day be filled with love, laughter, and joy, And every wish you make may come true.";
+additionalText2.style.fontSize = '1.2rem';
+additionalText2.style.textAlign = 'center';
+additionalText2.style.marginTop = '10px';
+additionalText2.style.color = 'violet'; // Violet (purple)
+
+const additionalText3 = document.createElement('p');
+additionalText3.textContent = "You Deserve a lot and I'll be here to remind you of that 🫶";
+additionalText3.style.fontSize = '1.2rem';
+additionalText3.style.textAlign = 'center';
+additionalText3.style.marginTop = '10px';
+additionalText3.style.color = '#ff1493'; // Reddish pink
+
+// Append the texts to the second container content
+secondContainerContent.appendChild(additionalText1);
+secondContainerContent.appendChild(additionalText2);
+secondContainerContent.appendChild(additionalText3);
 
 // Floating Emojis behind the page
 const emojis = [,'💗','🔷', '💖', '🌟','🥟'];
