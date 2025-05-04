@@ -460,7 +460,7 @@ style.textContent = `
   }
 
   .reveal-box-back {
-    background: rgb(248, 237, 196); /* Existing background color */
+    background: rgb(248, 237, 212); /* Existing background color */
     color: blue; /* Change font color to blue */
     font-size: 0.8rem;
     transform: rotateX(180deg); /* Flip vertically */
@@ -575,7 +575,7 @@ nextButton.addEventListener("click", () => {
         "rgb(46, 114, 241)",      // Darker peach
         "rgb(198, 198, 67)"       // Darker yellow
       ],
-      
+      infiniteLoop: false,
       velocity: 0.0005,
       quantity: 750,
       minSize: 4,
@@ -664,7 +664,7 @@ revealBoxBack.innerHTML = `
   <span style="color: violet;">Just wanted to tell you that- you are my favourite person. Whenever I talk to you my day becomes Better</span><br>
   <span style="color: #ff1493;">I Hope your birthday is full of Love, Magic and Happiness! which make you smile ❣️</span>
 `;
-
+revealBoxBack.style.background = 'rgb(255, 246, 217)'; 
 // Style the reveal box for flexible positioning and shape
 revealBox.style.margin = '50vw 5vw'; // Center horizontally
 revealBox.style.marginTop = '4%'; // Add spacing from the top
@@ -673,6 +673,7 @@ revealBox.style.maxWidth = '500px'; // Limit maximum width
 revealBox.style.height = '40vw'; // Adjust height
 revealBox.style.maxHeight = '200px'; // Limit maximum height
 revealBox.style.borderRadius = '15px'; // Add rounded corners
+revealBox.style.perspective = '1000px'; // Enable 3D perspective
 
 // Style the front text of the reveal card
 const revealBoxFront = revealBox.querySelector('.reveal-box-front');
@@ -681,13 +682,20 @@ revealBoxFront.style.overflow = 'hidden'; // Prevent text overflow
 revealBoxFront.style.textAlign = 'center'; // Center-align text
 revealBoxFront.style.lineHeight = '1.5'; // Adjust line height for readability
 revealBoxFront.style.fontSize = '1rem'; // Adjust font size for better fit
+revealBoxFront.style.transform = 'rotate(5deg) translateY(-10px)'; // Tilt slightly to the right and move up
+revealBoxFront.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)'; // Add a shadow for the floating effect
+revealBoxFront.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease'; // Smooth transition for hover effect
 
-// Style the back text of the reveal card
-revealBoxBack.style.padding = '10px'; // Add padding for spacing
-revealBoxBack.style.overflow = 'hidden'; // Prevent text overflow
-revealBoxBack.style.textAlign = 'center'; // Center-align text
-revealBoxBack.style.lineHeight = '1.5'; // Adjust line height for readability
-revealBoxBack.style.fontSize = '0.9rem'; // Adjust font size for better fit
+// Add hover effect to enhance the floating appearance
+revealBoxFront.addEventListener('mouseover', () => {
+  revealBoxFront.style.transform = 'rotate(8deg) translateY(-15px)'; // Increase tilt and lift on hover
+  revealBoxFront.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.3)'; // Enhance shadow on hover
+});
+
+revealBoxFront.addEventListener('mouseout', () => {
+  revealBoxFront.style.transform = 'rotate(5deg) translateY(-10px)'; // Reset tilt and lift
+  revealBoxFront.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)'; // Reset shadow
+});
 
 // Append the "Tap to Reveal" box to the second container
 secondContainerContent.appendChild(revealBox);
@@ -700,21 +708,21 @@ revealBox.addEventListener('click', () => {
 // Add additional texts below the reveal box
 const additionalText1 = document.createElement('p');
 additionalText1.textContent = "Wishing you all the happiness in the world!";
-additionalText1.style.fontSize = '0.8rem';
+additionalText1.style.fontSize = '0.8rem'; // Reduced font size
 additionalText1.style.textAlign = 'center';
 additionalText1.style.marginTop = '0px';
 additionalText1.style.color = '#ff1493'; // Reddish pink
 
 const additionalText2 = document.createElement('p');
 additionalText2.textContent = "May your day be filled with love, laughter, and joy, And every wish you make may come true.";
-additionalText2.style.fontSize = '0.8rem';
+additionalText2.style.fontSize = '0.8rem'; // Reduced font size
 additionalText2.style.textAlign = 'center';
 additionalText2.style.marginTop = '0px';
 additionalText2.style.color = 'violet'; // Violet (purple)
 
 const additionalText3 = document.createElement('p');
 additionalText3.textContent = "You Deserve a lot and I'll be here to remind you of that 🫶";
-additionalText3.style.fontSize = '0.8rem';
+additionalText3.style.fontSize = '0.8rem'; // Reduced font size
 additionalText3.style.textAlign = 'center';
 additionalText3.style.marginTop = '0px';
 additionalText3.style.color = '#ff1493'; // Reddish pink
@@ -758,7 +766,7 @@ container.style.zIndex = '1'; // Set a higher z-index for the countdown containe
 secondContainer.style.zIndex = '2'; // Set a higher z-index for the second container
 
 // Logic
-const birthday = new Date("2025-06-04T01:30:00");
+const birthday = new Date("2025-05-04T01:30:00");
 
 function createTimeBox(value, label) {
   return `
