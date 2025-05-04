@@ -616,17 +616,12 @@ secondContainerContent.style.textAlign = 'center';
 secondContainerContent.style.padding = '5%'; // Use percentage for padding
 secondContainerContent.style.lineHeight = '1.5'; // Adjust line height for readability
 
-// Adjust styles for the second container content
-secondContainerContent.style.display = 'flex'; // Use flexbox
-secondContainerContent.style.flexDirection = 'column'; // Stack elements vertically
-secondContainerContent.style.alignItems = 'center'; // Center horizontally
-secondContainerContent.style.justifyContent = 'center'; // Center vertically
-secondContainerContent.style.height = '100%'; // Ensure it takes full height
-
 // Add "Happy Birthday!" text
 const happyBirthdayText = document.createElement('h1');
 happyBirthdayText.textContent = "Happy Birthday!";
-happyBirthdayText.style.fontSize = '5vw'; // Use viewport width for font size
+happyBirthdayText.style.fontSize = '5vw'; // Larger font size
+happyBirthdayText.style.fontWeight = 'bold'; // Make it bold
+happyBirthdayText.style.textShadow = '2px 2px 5px rgba(0, 0, 0, 0.3)'; // Add shadow for emphasis
 happyBirthdayText.style.color = '#ff3053';
 happyBirthdayText.style.marginBottom = '2%'; // Use percentage for spacing
 happyBirthdayText.style.marginTop = '0px'; // Move closer to the top
@@ -635,14 +630,16 @@ secondContainerContent.appendChild(happyBirthdayText);
 // Add emojis
 const emojisLine = document.createElement('div');
 emojisLine.textContent = "🎉🎂🎁✨💖";
-emojisLine.style.fontSize = '4vw'; // Use viewport width for font size
-emojisLine.style.marginBottom = '2%'; // Use percentage for spacing
+emojisLine.style.fontSize = '4vw'; // Larger font size for emojis
+emojisLine.style.marginBottom = '3%'; // Add more spacing below emojis
 secondContainerContent.appendChild(emojisLine);
 
 // Add "To My Cutiepie" text
 const cutiepieText = document.createElement('h2');
 cutiepieText.textContent = "To My Cutiepie...";
-cutiepieText.style.fontSize = '4vw'; // Use viewport width for font size
+cutiepieText.style.fontSize = '3vw'; // Slightly larger font size
+cutiepieText.style.fontWeight = '600'; // Semi-bold
+cutiepieText.style.textShadow = '1px 1px 3px rgba(0, 0, 0, 0.2)'; // Add subtle shadow
 cutiepieText.style.color = '#fa0c68';
 cutiepieText.style.marginTop = '1%'; // Use percentage for spacing
 cutiepieText.style.marginBottom = '2%'; // Use percentage for spacing
@@ -661,6 +658,24 @@ revealBox.innerHTML = `
 </div>
   </div>
 `;
+
+// Style the reveal box for flexible positioning and shape
+revealBox.style.margin = '50vw 15vw'; // Center horizontally
+revealBox.style.marginTop = '4%'; // Add spacing from the top
+revealBox.style.width = '75vw'; // Adjust width
+revealBox.style.maxWidth = '350px'; // Limit maximum width
+revealBox.style.height = '30vw'; // Adjust height
+revealBox.style.maxHeight = '200px'; // Limit maximum height
+revealBox.style.borderRadius = '15px'; // Add rounded corners
+
+// Style the front text of the reveal card
+const revealBoxFront = revealBox.querySelector('.reveal-box-front');
+revealBoxFront.style.fontSize = '1rem'; // Adjust font size
+revealBoxFront.style.fontWeight = 'bold'; // Make it bold
+revealBoxFront.style.textAlign = 'center'; // Center-align text
+revealBoxFront.style.padding = '10px'; // Add padding for better spacing
+revealBoxFront.style.lineHeight = '1.5'; // Adjust line height for readability
+revealBoxFront.textContent = 'Tap to Reveal Your Card '; // Update text
 
 // Append the "Tap to Reveal" box to the second container
 secondContainerContent.appendChild(revealBox);
