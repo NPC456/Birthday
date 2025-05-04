@@ -544,6 +544,13 @@ setInterval(() => {
   dotIndex = (dotIndex + 1) % dots.length;
 }, 500);
 
+// Add background audio
+const backgroundAudio = document.createElement('audio');
+backgroundAudio.src = "./Sparkling Chaos.mp3"; // Ensure the file is in the same directory as index.html
+backgroundAudio.loop = true; // Loop the audio
+
+document.body.appendChild(backgroundAudio);
+
 // Create countdown container
 const container = document.createElement('div');
 container.className = 'countdown-container';
@@ -780,6 +787,9 @@ window.onload = () => {
       loadingScreen.remove(); // Remove the loading screen
     }
     container.classList.add('show'); // Show the countdown container
+    backgroundAudio.play().catch((error) => {
+      console.error("Audio playback failed:", error);
+    }); // Start playing the audio
     setTimeout(() => ribbon.classList.add('reveal'), 2000); // Reveal the ribbon
   }, 3000); // Adjust the timeout as needed
 };
@@ -788,6 +798,7 @@ window.onload = () => {
 setTimeout(() => {
   if (document.getElementById('loading-screen')) {
     loadingScreen.remove(); // Remove the loading screen
+    backgroundAudio.play(); // Start playing the audio
   }
 }, 10000); // Fallback timeout (10 seconds)
 
