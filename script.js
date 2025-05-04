@@ -714,7 +714,7 @@ const additionalText1 = document.createElement('p');
 additionalText1.textContent = "Wishing you all the happiness in the world!";
 additionalText1.style.fontSize = '0.8rem'; // Reduced font size
 additionalText1.style.textAlign = 'center';
-additionalText1.style.marginTop = '-80px';
+additionalText1.style.marginTop = '-160px';
 additionalText1.style.color = '#ff1493'; // Reddish pink
 
 const additionalText2 = document.createElement('p');
