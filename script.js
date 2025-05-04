@@ -166,20 +166,21 @@ style.textContent = `
 
   .time-value {
     font-family: 'Kalam', cursive; /* Font for time value */
-    font-size: 1.5rem; /* Increase font size for better visibility */
+    font-size: 2rem; /* Increase font size for better visibility */
     font-weight: bold;
     position: absolute; /* Allow precise positioning */
-    top: 30%; /* Adjust vertical position */
+    top: 40%; /* Adjust vertical position downward */
     left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%); /* Center the element */
+    color: rgb(153, 102, 204); /* Change color to pink */
   }
 
   .time-label {
     font-family: 'Leckerli One', cursive; /* Font for time label */
-    font-size: 1rem;
-    color: #444;
+    font-size: 1.2rem;
+    color:rgb(255, 0, 128); /* Change color to pink */
     position: absolute; /* Allow precise positioning */
-    bottom: 10%; /* Adjust vertical position */
+    bottom: 12%; /* Adjust vertical position upward */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%); /* Center the element */
   }
@@ -191,13 +192,13 @@ style.textContent = `
     }
 
     .time-value {
-      font-size: 1.2rem; /* Adjust font size for smaller screens */
-      top: 25%; /* Adjust vertical position */
+      font-size: 2rem; /* Adjust font size for smaller screens */
+      top: 40%; /* Adjust vertical position */
     }
 
     .time-label {
-      font-size: 0.9rem; /* Adjust font size for smaller screens */
-      bottom: 8%; /* Adjust vertical position */
+      font-size: 1.2rem; /* Adjust font size for smaller screens */
+      bottom: 12%; /* Adjust vertical position */
     }
   }
 
@@ -208,13 +209,13 @@ style.textContent = `
     }
 
     .time-value {
-      font-size: 1rem; /* Adjust font size for very small screens */
-      top: 20%; /* Adjust vertical position */
+      font-size: 2rem; /* Adjust font size for very small screens */
+      top: 40%; /* Adjust vertical position */
     }
 
     .time-label {
-      font-size: 0.8rem; /* Adjust font size for very small screens */
-      bottom: 5%; /* Adjust vertical position */
+      font-size: 1.2rem; /* Adjust font size for very small screens */
+      bottom: 12%; /* Adjust vertical position */
     }
   }
 
@@ -509,6 +510,16 @@ const container = document.createElement('div');
 container.className = 'countdown-container';
 container.id = 'countdown-box';
 
+// Add "Birthday Countdown" text
+const countdownTitle = document.createElement('h3');
+countdownTitle.textContent = "Birthday Countdown";
+countdownTitle.style.textAlign = 'center';
+countdownTitle.style.fontFamily = "'Pacifico', cursive";
+countdownTitle.style.fontSize = '2rem';
+countdownTitle.style.color = '#ff1493';
+countdownTitle.style.marginBottom = '0'; // Add spacing below the title
+container.appendChild(countdownTitle);
+
 const ribbon = document.createElement('div');
 ribbon.id = 'ribbon';
 ribbon.textContent = '🎀';
@@ -521,7 +532,7 @@ container.appendChild(countdownEl);
 // Create extra message box
 const extraMessageBox = document.createElement('div');
 extraMessageBox.className = 'extra-message-box';
-extraMessageBox.innerHTML = "Just a little more....<br>a special gift for my favourite person";
+extraMessageBox.innerHTML = "Just a little more....<br>a special gift for my favourite person💖";
 extraMessageBox.style.fontSize = "1rem";
 container.appendChild(extraMessageBox);
 
@@ -766,7 +777,7 @@ container.style.zIndex = '1'; // Set a higher z-index for the countdown containe
 secondContainer.style.zIndex = '2'; // Set a higher z-index for the second container
 
 // Logic
-const birthday = new Date("2025-05-04T01:30:00");
+const birthday = new Date("2025-06-04T01:30:00");
 
 function createTimeBox(value, label) {
   return `
