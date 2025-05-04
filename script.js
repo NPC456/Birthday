@@ -505,12 +505,12 @@ container.id = 'countdown-box';
 
 // Add "Birthday Countdown" text
 const countdownTitle = document.createElement('h3');
-countdownTitle.textContent = "Birthday Countdown 🎂";
+countdownTitle.textContent = " Birthday Countdown 🎂";
 countdownTitle.style.textAlign = 'center';
 countdownTitle.style.fontFamily = "'Pacifico', cursive";
 countdownTitle.style.fontSize = '1.5rem';
 countdownTitle.style.color = '#ff1493';
-countdownTitle.style.marginTop = '-20px'; // Add spacing below the title
+countdownTitle.style.marginTop = '-10px'; // Add spacing below the title
 container.appendChild(countdownTitle);
 
 const ribbon = document.createElement('div');
@@ -714,7 +714,7 @@ const additionalText1 = document.createElement('p');
 additionalText1.textContent = "Wishing you all the happiness in the world!";
 additionalText1.style.fontSize = '0.8rem'; // Reduced font size
 additionalText1.style.textAlign = 'center';
-additionalText1.style.marginTop = '-165px';
+additionalText1.style.marginTop = '-170px';
 additionalText1.style.color = '#ff1493'; // Reddish pink
 
 const additionalText2 = document.createElement('p');
