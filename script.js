@@ -654,16 +654,16 @@ revealBox.className = 'reveal-box';
 revealBox.innerHTML = `
   <div class="reveal-box-inner">
     <div class="reveal-box-front">Tap to Reveal Your Card</div>
-    <div class="reveal-box-back">Just wanted to tell you that- you are my favourite person. <br>Whenever i talk to you my day becomes Better<br>I Hope your birthday is full of Love, Magic and Happiness ! <br>which make you smile.
+    <div class="reveal-box-back">Just wanted to tell you that- you are my favourite person. <br>Whenever i talk to you my day becomes Better I Hope your birthday is<br> full of Love, Magic and Happiness ! <br>which make you smile.
 </div>
   </div>
 `;
 
 // Style the reveal box for flexible positioning and shape
-revealBox.style.margin = '50vw 14vw'; // Center horizontally
+revealBox.style.margin = '50vw 5vw'; // Center horizontally
 revealBox.style.marginTop = '4%'; // Add spacing from the top
-revealBox.style.width = '75vw'; // Adjust width
-revealBox.style.maxWidth = '350px'; // Limit maximum width
+revealBox.style.width = '150vw'; // Adjust width
+revealBox.style.maxWidth = '500px'; // Limit maximum width
 revealBox.style.height = '30vw'; // Adjust height
 revealBox.style.maxHeight = '200px'; // Limit maximum height
 revealBox.style.borderRadius = '15px'; // Add rounded corners
