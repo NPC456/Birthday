@@ -660,7 +660,7 @@ revealBox.innerHTML = `
 `;
 
 // Style the reveal box for flexible positioning and shape
-revealBox.style.margin = '50vw 15vw'; // Center horizontally
+revealBox.style.margin = '50vw 14vw'; // Center horizontally
 revealBox.style.marginTop = '4%'; // Add spacing from the top
 revealBox.style.width = '75vw'; // Adjust width
 revealBox.style.maxWidth = '350px'; // Limit maximum width
@@ -670,12 +670,19 @@ revealBox.style.borderRadius = '15px'; // Add rounded corners
 
 // Style the front text of the reveal card
 const revealBoxFront = revealBox.querySelector('.reveal-box-front');
-revealBoxFront.style.fontSize = '1rem'; // Adjust font size
-revealBoxFront.style.fontWeight = 'bold'; // Make it bold
+revealBoxFront.style.padding = '10px'; // Add padding for spacing
+revealBoxFront.style.overflow = 'hidden'; // Prevent text overflow
 revealBoxFront.style.textAlign = 'center'; // Center-align text
-revealBoxFront.style.padding = '10px'; // Add padding for better spacing
 revealBoxFront.style.lineHeight = '1.5'; // Adjust line height for readability
-revealBoxFront.textContent = 'Tap to Reveal Your Card '; // Update text
+revealBoxFront.style.fontSize = '1rem'; // Adjust font size for better fit
+
+// Style the back text of the reveal card
+const revealBoxBack = revealBox.querySelector('.reveal-box-back');
+revealBoxBack.style.padding = '10px'; // Add padding for spacing
+revealBoxBack.style.overflow = 'hidden'; // Prevent text overflow
+revealBoxBack.style.textAlign = 'center'; // Center-align text
+revealBoxBack.style.lineHeight = '1.5'; // Adjust line height for readability
+revealBoxBack.style.fontSize = '0.9rem'; // Adjust font size for better fit
 
 // Append the "Tap to Reveal" box to the second container
 secondContainerContent.appendChild(revealBox);
