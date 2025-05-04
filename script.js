@@ -575,6 +575,7 @@ nextButton.addEventListener("click", () => {
         "rgb(46, 114, 241)",      // Darker peach
         "rgb(198, 198, 67)"       // Darker yellow
       ],
+      
       velocity: 0.0005,
       quantity: 750,
       minSize: 4,
@@ -586,6 +587,18 @@ nextButton.addEventListener("click", () => {
 
     // Call the generateConfetti function with the configuration and canvas ID
     generateConfetti(confettiConfigObj, "vanillaConfettiCanvas");
+
+    // Ensure the confetti canvas appears above everything
+    const confettiCanvas = document.getElementById("vanillaConfettiCanvas");
+    if (confettiCanvas) {
+      confettiCanvas.style.position = "fixed"; // Ensure it stays in place
+      confettiCanvas.style.top = "0";
+      confettiCanvas.style.left = "0";
+      confettiCanvas.style.width = "100vw";
+      confettiCanvas.style.height = "100vh";
+      confettiCanvas.style.zIndex = "9999"; // Set a very high z-index
+      confettiCanvas.style.pointerEvents = "none"; // Prevent interaction with the canvas
+    }
   }, 1500); // Delay to match the confetti timing
 });
 
@@ -602,6 +615,13 @@ const secondContainerContent = document.createElement('div');
 secondContainerContent.style.textAlign = 'center';
 secondContainerContent.style.padding = '5%'; // Use percentage for padding
 secondContainerContent.style.lineHeight = '1.5'; // Adjust line height for readability
+
+// Adjust styles for the second container content
+secondContainerContent.style.display = 'flex'; // Use flexbox
+secondContainerContent.style.flexDirection = 'column'; // Stack elements vertically
+secondContainerContent.style.alignItems = 'center'; // Center horizontally
+secondContainerContent.style.justifyContent = 'center'; // Center vertically
+secondContainerContent.style.height = '100%'; // Ensure it takes full height
 
 // Add "Happy Birthday!" text
 const happyBirthdayText = document.createElement('h1');
@@ -637,7 +657,7 @@ revealBox.className = 'reveal-box';
 revealBox.innerHTML = `
   <div class="reveal-box-inner">
     <div class="reveal-box-front">Tap to Reveal Your Card</div>
-    <div class="reveal-box-back">Just wanted to tell you that- you are my favourite person. <br>Whenever i talk to you my day beocmes Good, even it is for few minutes....<br>I Hope your birthday is full of Love and Magic! which make you smile.
+    <div class="reveal-box-back">Just wanted to tell you that- you are my favourite person. <br>Whenever i talk to you my day becomes Better<br>I Hope your birthday is full of Love, Magic and Happiness ! <br>which make you smile.
 </div>
   </div>
 `;
@@ -651,7 +671,7 @@ revealBox.addEventListener('click', () => {
 });
 
 // Floating Emojis behind the page
-const emojis = ['💖','💗','🔷', '💖', '🌟','🥟'];
+const emojis = [,'💗','🔷', '💖', '🌟','🥟'];
 const emojiWrapper = document.createElement('div');
 emojiWrapper.style.position = 'fixed';
 emojiWrapper.style.top = '0';
@@ -675,14 +695,6 @@ for (let i = 0; i < 15; i++) {
   // Add the emoji to the background layer
   emojiWrapper.appendChild(emojiElement);
 }
-
-// Add the special "✨" emoji at the top right corner of the container
-const specialEmoji = document.createElement('div');
-specialEmoji.classList.add('floating-emoji');
-specialEmoji.textContent = '✨';
-specialEmoji.style.left = 'calc(100% - 2rem)'; // Positioned at the top-right corner
-specialEmoji.style.top = '0';
-emojiWrapper.appendChild(specialEmoji);
 
 // Ensure the emoji wrapper stays behind the containers but remains visible
 emojiWrapper.style.zIndex = '0'; // Set z-index to 0 to keep it visible but behind other elements
