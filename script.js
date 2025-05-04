@@ -664,7 +664,7 @@ revealBox.style.margin = '50vw 5vw'; // Center horizontally
 revealBox.style.marginTop = '4%'; // Add spacing from the top
 revealBox.style.width = '100vw'; // Adjust width
 revealBox.style.maxWidth = '500px'; // Limit maximum width
-revealBox.style.height = '30vw'; // Adjust height
+revealBox.style.height = '40vw'; // Adjust height
 revealBox.style.maxHeight = '200px'; // Limit maximum height
 revealBox.style.borderRadius = '15px'; // Add rounded corners
 
