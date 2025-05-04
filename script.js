@@ -700,23 +700,23 @@ revealBox.addEventListener('click', () => {
 // Add additional texts below the reveal box
 const additionalText1 = document.createElement('p');
 additionalText1.textContent = "Wishing you all the happiness in the world!";
-additionalText1.style.fontSize = '1.2rem';
+additionalText1.style.fontSize = '0.8rem';
 additionalText1.style.textAlign = 'center';
-additionalText1.style.marginTop = '20px';
+additionalText1.style.marginTop = '2px';
 additionalText1.style.color = '#ff1493'; // Reddish pink
 
 const additionalText2 = document.createElement('p');
 additionalText2.textContent = "May your day be filled with love, laughter, and joy, And every wish you make may come true.";
-additionalText2.style.fontSize = '1.2rem';
+additionalText2.style.fontSize = '0.8rem';
 additionalText2.style.textAlign = 'center';
-additionalText2.style.marginTop = '10px';
+additionalText2.style.marginTop = '1px';
 additionalText2.style.color = 'violet'; // Violet (purple)
 
 const additionalText3 = document.createElement('p');
 additionalText3.textContent = "You Deserve a lot and I'll be here to remind you of that 🫶";
-additionalText3.style.fontSize = '1.2rem';
+additionalText3.style.fontSize = '0.8rem';
 additionalText3.style.textAlign = 'center';
-additionalText3.style.marginTop = '10px';
+additionalText3.style.marginTop = '1px';
 additionalText3.style.color = '#ff1493'; // Reddish pink
 
 // Append the texts to the second container content
