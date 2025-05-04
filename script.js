@@ -654,7 +654,7 @@ revealBox.className = 'reveal-box';
 revealBox.innerHTML = `
   <div class="reveal-box-inner">
     <div class="reveal-box-front">Tap to Reveal Your Card</div>
-    <div class="reveal-box-back">Just wanted to tell you that- you are my favourite person. <br>Whenever i talk to you my day becomes Better I Hope your birthday is<br> full of Love, Magic and Happiness ! <br>which make you smile.
+    <div class="reveal-box-back">Just wanted to tell you that- you are my favourite person. Whenever i talk to you my day becomes Better I Hope your birthday is full of Love, Magic and Happiness! which make you smile.
 </div>
   </div>
 `;
@@ -662,7 +662,7 @@ revealBox.innerHTML = `
 // Style the reveal box for flexible positioning and shape
 revealBox.style.margin = '50vw 5vw'; // Center horizontally
 revealBox.style.marginTop = '4%'; // Add spacing from the top
-revealBox.style.width = '150vw'; // Adjust width
+revealBox.style.width = '100vw'; // Adjust width
 revealBox.style.maxWidth = '500px'; // Limit maximum width
 revealBox.style.height = '30vw'; // Adjust height
 revealBox.style.maxHeight = '200px'; // Limit maximum height
