@@ -498,13 +498,6 @@ setInterval(() => {
   dotIndex = (dotIndex + 1) % dots.length;
 }, 500);
 
-// Add background audio
-const backgroundAudio = document.createElement('audio');
-backgroundAudio.src = "./Sparkling Chaos.mp3"; // Ensure the file is in the same directory as index.html
-backgroundAudio.loop = true; // Loop the audio
-
-document.body.appendChild(backgroundAudio);
-
 // Create countdown container
 const container = document.createElement('div');
 container.className = 'countdown-container';
@@ -515,9 +508,9 @@ const countdownTitle = document.createElement('h3');
 countdownTitle.textContent = "Birthday Countdown";
 countdownTitle.style.textAlign = 'center';
 countdownTitle.style.fontFamily = "'Pacifico', cursive";
-countdownTitle.style.fontSize = '2rem';
+countdownTitle.style.fontSize = '1.5rem';
 countdownTitle.style.color = '#ff1493';
-countdownTitle.style.marginBottom = '0'; // Add spacing below the title
+countdownTitle.style.marginTop = '-30px'; // Add spacing below the title
 container.appendChild(countdownTitle);
 
 const ribbon = document.createElement('div');
@@ -721,21 +714,21 @@ const additionalText1 = document.createElement('p');
 additionalText1.textContent = "Wishing you all the happiness in the world!";
 additionalText1.style.fontSize = '0.8rem'; // Reduced font size
 additionalText1.style.textAlign = 'center';
-additionalText1.style.marginTop = '0px';
+additionalText1.style.marginTop = '-30px';
 additionalText1.style.color = '#ff1493'; // Reddish pink
 
 const additionalText2 = document.createElement('p');
 additionalText2.textContent = "May your day be filled with love, laughter, and joy, And every wish you make may come true.";
 additionalText2.style.fontSize = '0.8rem'; // Reduced font size
 additionalText2.style.textAlign = 'center';
-additionalText2.style.marginTop = '0px';
+additionalText2.style.marginTop = '0';
 additionalText2.style.color = 'violet'; // Violet (purple)
 
 const additionalText3 = document.createElement('p');
 additionalText3.textContent = "You Deserve a lot and I'll be here to remind you of that 🫶";
 additionalText3.style.fontSize = '0.8rem'; // Reduced font size
 additionalText3.style.textAlign = 'center';
-additionalText3.style.marginTop = '0px';
+additionalText3.style.marginTop = '0';
 additionalText3.style.color = '#ff1493'; // Reddish pink
 
 // Append the texts to the second container content
@@ -777,7 +770,7 @@ container.style.zIndex = '1'; // Set a higher z-index for the countdown containe
 secondContainer.style.zIndex = '2'; // Set a higher z-index for the second container
 
 // Logic
-const birthday = new Date("2025-06-04T01:30:00");
+const birthday = new Date("2025-05-05T01:15:00");
 
 function createTimeBox(value, label) {
   return `
@@ -863,4 +856,4 @@ if (diff <= 0) {
 // Adjust countdown container styles
 const countdownContainer = document.querySelector('.countdown-container');
 countdownContainer.style.padding = '40px 40px'; // Adjust padding
-countdownContainer.style.height = '47vh'; // Adjust height
+countdownContainer.style.height = '55vh'; // Adjust height
