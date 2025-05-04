@@ -8,7 +8,7 @@ style.textContent = `
     margin: 0;
     padding: 0;
     height: 100%;
-    font-family: 'MV Boli', sans-serif;
+    font-family: 'Sour Gummy', sans-serif; /* Default font */
     background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
     background-size: 400% 400%;
     animation: gradientFlow 20s ease infinite;
@@ -16,7 +16,7 @@ style.textContent = `
   }
 
   * {
-    font-family: 'MV Boli', sans-serif;
+    font-family: 'Sour Gummy', sans-serif; /* Default font */
     box-sizing: border-box;
   }
 
@@ -46,18 +46,14 @@ style.textContent = `
     animation: fallAndBounce 2.2s cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
   }
 
-  h1, h2 {
-    margin: 0;
-    padding: 0;
-    text-align: center;
-  }
-
   h1 {
+    font-family: 'Pacifico', cursive; /* Font for "Happy Birthday" */
     font-size: 5vw; /* Responsive font size */
     color: #EF0BBD;
   }
 
   h2 {
+    font-family: 'Caveat', cursive; /* Font for "To My Cutiepie" */
     font-size: 4vw; /* Responsive font size */
     color: #F524C7;
   }
@@ -169,6 +165,7 @@ style.textContent = `
   }
 
   .time-value {
+    font-family: 'Kalam', cursive; /* Font for time value */
     font-size: 1.5rem; /* Increase font size for better visibility */
     font-weight: bold;
     position: absolute; /* Allow precise positioning */
@@ -178,6 +175,7 @@ style.textContent = `
   }
 
   .time-label {
+    font-family: 'Leckerli One', cursive; /* Font for time label */
     font-size: 1rem;
     color: #444;
     position: absolute; /* Allow precise positioning */
@@ -227,6 +225,7 @@ style.textContent = `
     text-align: center;
     margin-top: 40px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Sour Gummy', sans-serif; /* Default font */
     font-size: 1.5rem;
     color: #444;
   }
@@ -453,55 +452,9 @@ style.textContent = `
     }
   }
 
-  /* Font for "Happy Birthday" */
-  h1 {
-    font-family: 'Pacifico', cursive; /* Fun and decorative font */
-    font-size: 5vw; /* Responsive font size */
-    color: #ff3053;
-    margin-bottom: 2%;
-    margin-top: 0px;
-  }
-
-  /* Font for "To My Cutiepie" */
-  h2 {
-    font-family: 'Indie Flower', cursive; /* Handwritten style font */
-    font-size: 4vw; /* Responsive font size */
-    color: #fa0c68;
-    margin-top: 1%;
-    margin-bottom: 2%;
-  }
-
-  /* Font for the reveal card */
-  .reveal-box-front {
-    font-family: 'Roboto', sans-serif; /* Clean and modern font */
-    font-size: 3vw; /* Responsive font size */
-    font-weight: bold;
-    color: #fff;
-  }
-
-  /* Font for the countdown page */
-  .time-value {
-    font-family: 'Roboto', sans-serif; /* Clean and modern font */
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-
-  .time-label {
-    font-family: 'Roboto', sans-serif; /* Clean and modern font */
-    font-size: 1rem;
-    color: #444;
-  }
-
-  /* Font for the extra message box */
-  .extra-message-box {
-    font-family: 'Indie Flower', cursive; /* Handwritten style font */
-    font-size: 1.5rem;
-    color: #444;
-  }
-
   /* Font for the button */
   button {
-    font-family: 'Roboto', sans-serif; /* Clean and modern font */
+    font-family: 'Lobster', cursive; /* Font for buttons */
     font-size: 1rem;
     font-weight: bold;
   }
@@ -524,7 +477,7 @@ document.head.appendChild(style);
 // Add Google Fonts dynamically
 const fontLink = document.createElement('link');
 fontLink.rel = 'stylesheet';
-fontLink.href = 'https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&family=Indie+Flower&display=swap';
+fontLink.href = 'https://fonts.googleapis.com/css2?family=Pacifico&family=Caveat:wght@400;700&family=Lobster&family=Kalam:wght@400;700&family=Leckerli+One&family=Sour+Gummy:wght@500&display=swap';
 document.head.appendChild(fontLink);
 
 // Create loading screen
@@ -737,37 +690,6 @@ emojiWrapper.style.zIndex = '0'; // Set z-index to 0 to keep it visible but behi
 // Ensure the containers have a higher z-index
 container.style.zIndex = '1'; // Set a higher z-index for the countdown container
 secondContainer.style.zIndex = '2'; // Set a higher z-index for the second container
-
-// Create a mute/unmute button
-const muteButton = document.createElement('button');
-muteButton.textContent = "Mute"; // Default text for mute
-muteButton.style.position = "fixed";
-muteButton.style.top = "20px"; // Position at the top corner
-muteButton.style.right = "20px"; // Position at the right corner
-muteButton.style.padding = "10px 20px"; // Adjust padding for rounded rectangle shape
-muteButton.style.fontSize = "1.2rem";
-muteButton.style.cursor = "pointer";
-muteButton.style.border = "none";
-muteButton.style.borderRadius = "15px"; // Rounded rectangle shape
-muteButton.style.backgroundColor = "rgba(255, 255, 255, 0.6)"; // Semi-transparent background
-muteButton.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.2)"; // Shadow effect
-muteButton.style.transition = "background-color 0.3s ease, transform 0.2s ease";
-muteButton.onmouseover = () => muteButton.style.backgroundColor = "rgba(240, 240, 240, 0.8)";
-muteButton.onmouseout = () => muteButton.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
-muteButton.onmousedown = () => muteButton.style.transform = "scale(0.95)";
-muteButton.onmouseup = () => muteButton.style.transform = "scale(1)";
-
-// Add event listener to toggle text between "Mute" and "Unmute"
-muteButton.addEventListener("click", () => {
-  if (muteButton.textContent === "Mute") {
-    muteButton.textContent = "Unmute";
-  } else {
-    muteButton.textContent = "Mute";
-  }
-});
-
-// Append the mute/unmute button to the body
-document.body.appendChild(muteButton);
 
 // Logic
 const birthday = new Date("2025-05-04T01:30:00");
