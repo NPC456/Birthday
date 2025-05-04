@@ -64,51 +64,14 @@ style.textContent = `
 
   #loading-screen {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1); /* Gradient background */
-    background-size: 400% 400%;
-    animation: gradientFlow 6s ease infinite; /* Animate the gradient */
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: #fff8fb;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 2rem;
     z-index: 9999;
-    overflow: hidden;
-  }
-
-  .loading-text {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #fff;
-    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    animation: bounce 1.5s infinite; /* Add bounce animation */
-  }
-
-  @keyframes bounce {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-20px); /* Move up */
-    }
-  }
-
-  .loading-dots {
-    display: inline-block;
-    font-size: 2rem;
-    color: #fff;
-    animation: fadeDots 1.5s infinite; /* Add fade animation for dots */
-  }
-
-  @keyframes fadeDots {
-    0%, 100% {
-      opacity: 0.3;
-    }
-    50% {
-      opacity: 1;
-    }
   }
 
   @keyframes fallAndBounce {
@@ -180,41 +143,6 @@ style.textContent = `
     .floating-emoji {
       font-size: 3vw; /* Adjust emoji size */
     }
-  }
-
-  @media (max-width: 480px) {
-    .countdown-container, .second-container {
-      width: 75vw; /* Full width for very small screens */
-      height: 65vh; /* Adjust height for very small screens */
-      padding: 3vw; /* Adjust padding for very small screens */
-    }
-
-    h1 {
-      font-size: 7vw; /* Larger font size for very small screens */
-    }
-
-    h2 {
-      font-size: 6vw; /* Larger font size for very small screens */
-    }
-
-    .floating-emoji {
-      font-size: 4vw; /* Adjust emoji size */
-    }
-  }
-
-  #ribbon {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    font-size: 2rem;
-    opacity: 0;
-    transform: scale(0);
-    transition: all 1s ease;
-  }
-
-  #ribbon.reveal {
-    opacity: 1;
-    transform: scale(2);
   }
 
   #countdown {
@@ -469,7 +397,7 @@ style.textContent = `
 
   .reveal-box {
     position: relative;
-    width: 50vw; /* Adjust width (e.g., 50% of the viewport width) */
+    width: 80vw; /* Adjust width (e.g., 50% of the viewport width) */
     max-width: 400px; /* Set a maximum width */
     height: 25vw; /* Adjust height (e.g., 25% of the viewport width) */
     max-height: 200px; /* Set a maximum height */
@@ -499,19 +427,112 @@ style.textContent = `
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
+
+  .reveal-box {
+    position: relative;
+    width: 50vw; /* Set width to 50% of the viewport width */
+    max-width: 400px; /* Set a maximum width for larger screens */
+    height: 25vw; /* Maintain aspect ratio with height */
+    max-height: 200px; /* Set a maximum height */
+    margin: 20px auto;
+    perspective: 1000px; /* Enable 3D perspective */
+  }
+
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .reveal-box {
+      width: 70vw; /* Increase width for smaller screens */
+      height: 35vw; /* Adjust height proportionally */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .reveal-box {
+      width: 90vw; /* Use almost full width for very small screens */
+      height: 45vw; /* Adjust height proportionally */
+    }
+  }
+
+  /* Font for "Happy Birthday" */
+  h1 {
+    font-family: 'Pacifico', cursive; /* Fun and decorative font */
+    font-size: 5vw; /* Responsive font size */
+    color: #ff3053;
+    margin-bottom: 2%;
+    margin-top: 0px;
+  }
+
+  /* Font for "To My Cutiepie" */
+  h2 {
+    font-family: 'Indie Flower', cursive; /* Handwritten style font */
+    font-size: 4vw; /* Responsive font size */
+    color: #fa0c68;
+    margin-top: 1%;
+    margin-bottom: 2%;
+  }
+
+  /* Font for the reveal card */
+  .reveal-box-front {
+    font-family: 'Roboto', sans-serif; /* Clean and modern font */
+    font-size: 3vw; /* Responsive font size */
+    font-weight: bold;
+    color: #fff;
+  }
+
+  /* Font for the countdown page */
+  .time-value {
+    font-family: 'Roboto', sans-serif; /* Clean and modern font */
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .time-label {
+    font-family: 'Roboto', sans-serif; /* Clean and modern font */
+    font-size: 1rem;
+    color: #444;
+  }
+
+  /* Font for the extra message box */
+  .extra-message-box {
+    font-family: 'Indie Flower', cursive; /* Handwritten style font */
+    font-size: 1.5rem;
+    color: #444;
+  }
+
+  /* Font for the button */
+  button {
+    font-family: 'Roboto', sans-serif; /* Clean and modern font */
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .reveal-box-back {
+    background: rgb(248, 237, 196); /* Existing background color */
+    color: blue; /* Change font color to blue */
+    font-size: 0.8rem;
+    transform: rotateX(180deg); /* Flip vertically */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 15px; /* Ensure proper spacing */
+  }
 `;
 
 document.head.appendChild(style);
+
+// Add Google Fonts dynamically
+const fontLink = document.createElement('link');
+fontLink.rel = 'stylesheet';
+fontLink.href = 'https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&family=Indie+Flower&display=swap';
+document.head.appendChild(fontLink);
 
 // Create loading screen
 const loadingScreen = document.createElement('div');
 loadingScreen.id = 'loading-screen';
 const loadingText = document.createElement('div');
 loadingText.className = 'loading-text';
-loadingText.innerHTML = `
-  <span class="loading-text">Loading</span>
-  <span class="loading-dots">...</span>
-`;
+loadingText.textContent = 'Loading...';
 loadingScreen.appendChild(loadingText);
 document.body.appendChild(loadingScreen);
 
@@ -656,7 +677,8 @@ revealBox.className = 'reveal-box';
 revealBox.innerHTML = `
   <div class="reveal-box-inner">
     <div class="reveal-box-front">Tap to Reveal Your Card</div>
-    <div class="reveal-box-back">Just wanted to tell you that- you are my favourite person. <br>Whenever i talk to you my day beocmes Good, even it is for few minutes....<br>I Hope your birthday is full of Love and Magic! which make you smile.</div>
+    <div class="reveal-box-back">Just wanted to tell you that- you are my favourite person. <br>Whenever i talk to you my day beocmes Good, even it is for few minutes....<br>I Hope your birthday is full of Love and Magic! which make you smile.
+</div>
   </div>
 `;
 
@@ -741,7 +763,7 @@ muteButton.addEventListener("click", () => {
 document.body.appendChild(muteButton);
 
 // Logic
-const birthday = new Date("2025-04-03T21:24:00");
+const birthday = new Date("2025-05-04T01:30:00");
 
 function createTimeBox(value, label) {
   return `
@@ -754,11 +776,20 @@ function createTimeBox(value, label) {
 
 window.onload = () => {
   setTimeout(() => {
-    loadingScreen.remove();
-    container.classList.add('show');
-    setTimeout(() => ribbon.classList.add('reveal'), 2000);
-  }, 3000);
+    if (document.getElementById('loading-screen')) {
+      loadingScreen.remove(); // Remove the loading screen
+    }
+    container.classList.add('show'); // Show the countdown container
+    setTimeout(() => ribbon.classList.add('reveal'), 2000); // Reveal the ribbon
+  }, 3000); // Adjust the timeout as needed
 };
+
+// Fallback to ensure the loading screen is removed after a maximum timeout
+setTimeout(() => {
+  if (document.getElementById('loading-screen')) {
+    loadingScreen.remove(); // Remove the loading screen
+  }
+}, 10000); // Fallback timeout (10 seconds)
 
 const now = new Date();
 let diff = birthday - now;
