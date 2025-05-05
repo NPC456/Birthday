@@ -475,6 +475,7 @@ style.textContent = `
 
 document.head.appendChild(style);
 
+
 // Add Google Fonts dynamically
 const fontLink = document.createElement('link');
 fontLink.rel = 'stylesheet';
@@ -789,8 +790,8 @@ document.body.appendChild(fixedEmojiLeft);
 const fixedEmojiRight = document.createElement('div');
 fixedEmojiRight.textContent = '✨';
 fixedEmojiRight.style.position = 'fixed';
-fixedEmojiRight.style.right = '3%'; // Fixed position on the right
-fixedEmojiRight.style.top = '13%'; // Center vertically
+fixedEmojiRight.style.right = '10%'; // Fixed position on the right
+fixedEmojiRight.style.top = '12%'; // Center vertically
 fixedEmojiRight.style.fontSize = '10vw'; // Increase size
 fixedEmojiRight.style.transform = 'translateY(-50%)'; // Center alignment
 fixedEmojiRight.style.zIndex = '0'; // Ensure it's behind other elements
@@ -949,7 +950,7 @@ footnoteBox.style.opacity = '0.5'; // Slightly transparent
 // Add footnote content
 footnoteBox.innerHTML = `
   <ul style="margin: 0; padding: 0 0 0 15px; list-style: disc;">
-    <li>Since i cant give you any physical gift, I made this.</li>
+    <li>Sorry, I can't give you any physical gift, So... I made this.</li>
     </li>
   </ul>
 `;
