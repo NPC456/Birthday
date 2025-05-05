@@ -505,7 +505,7 @@ container.id = 'countdown-box';
 
 // Add "Birthday Countdown" text
 const countdownTitle = document.createElement('h3');
-countdownTitle.textContent = " Birthday Countdown 🎂";
+countdownTitle.textContent = "Birthday Countdown 🎂";
 countdownTitle.style.textAlign = 'center';
 countdownTitle.style.fontFamily = "'Pacifico', cursive";
 countdownTitle.style.fontSize = '1.5rem';
@@ -714,7 +714,7 @@ const additionalText1 = document.createElement('p');
 additionalText1.textContent = "Wishing you all the happiness in the world!";
 additionalText1.style.fontSize = '0.8rem'; // Reduced font size
 additionalText1.style.textAlign = 'center';
-additionalText1.style.marginTop = '-170px';
+additionalText1.style.marginTop = '-150px';
 additionalText1.style.color = '#ff1493'; // Reddish pink
 
 const additionalText2 = document.createElement('p');
@@ -737,7 +737,7 @@ secondContainerContent.appendChild(additionalText2);
 secondContainerContent.appendChild(additionalText3);
 
 // Floating Emojis behind the page
-const emojis = [,'💗','🔷', '💖', '🌟','🥟'];
+const emojis = [,'📔','💖','🥟', '🌟','💠',];
 const emojiWrapper = document.createElement('div');
 emojiWrapper.style.position = 'fixed';
 emojiWrapper.style.top = '0';
@@ -768,6 +768,50 @@ emojiWrapper.style.zIndex = '0'; // Set z-index to 0 to keep it visible but behi
 // Ensure the containers have a higher z-index
 container.style.zIndex = '1'; // Set a higher z-index for the countdown container
 secondContainer.style.zIndex = '2'; // Set a higher z-index for the second container
+
+// Add fixed emojis to the background
+const fixedEmojiLeft = document.createElement('div');
+fixedEmojiLeft.textContent = '💗';
+fixedEmojiLeft.style.position = 'fixed';
+fixedEmojiLeft.style.left = '2%'; // Fixed position on the left
+fixedEmojiLeft.style.top = '5%'; // Center vertically
+fixedEmojiLeft.style.fontSize = '13vw'; // Increase size
+fixedEmojiLeft.style.transform = 'translateY(-50%)'; // Center alignment
+fixedEmojiLeft.style.zIndex = '0'; // Ensure it's behind other elements
+fixedEmojiLeft.style.pointerEvents = 'none'; // Prevent interaction
+fixedEmojiLeft.style.opacity = '0.5'; // Slightly transparent
+document.body.appendChild(fixedEmojiLeft);
+
+const fixedEmojiRight = document.createElement('div');
+fixedEmojiRight.textContent = '✨';
+fixedEmojiRight.style.position = 'fixed';
+fixedEmojiRight.style.right = '3%'; // Fixed position on the right
+fixedEmojiRight.style.top = '13%'; // Center vertically
+fixedEmojiRight.style.fontSize = '10vw'; // Increase size
+fixedEmojiRight.style.transform = 'translateY(-50%)'; // Center alignment
+fixedEmojiRight.style.zIndex = '0'; // Ensure it's behind other elements
+fixedEmojiRight.style.pointerEvents = 'none'; // Prevent interaction
+document.body.appendChild(fixedEmojiRight);
+
+// Add floating animation to the fixed emoji on the right
+fixedEmojiRight.style.animation = 'floatRight 3s ease-in-out infinite';
+
+// Define the floating animation using CSS
+const floatingStyle = document.createElement('style');
+floatingStyle.textContent = `
+  @keyframes floatRight {
+    0% {
+      transform: translateY(-10px);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+    100% {
+      transform: translateY(-10px);
+    }
+  }
+`;
+document.head.appendChild(floatingStyle);
 
 // Logic
 const birthday = new Date("2025-05-05T01:15:00");
