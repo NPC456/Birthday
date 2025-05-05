@@ -525,7 +525,7 @@ container.appendChild(countdownEl);
 // Create extra message box
 const extraMessageBox = document.createElement('div');
 extraMessageBox.className = 'extra-message-box';
-extraMessageBox.innerHTML = "Just a little more....<br>a special gift for my favourite person💖";
+extraMessageBox.innerHTML = "Just a little more....<br>a special small gift for You💖";
 extraMessageBox.style.fontSize = "1rem";
 container.appendChild(extraMessageBox);
 
@@ -689,6 +689,10 @@ revealBoxFront.style.fontSize = '1rem'; // Adjust font size for better fit
 revealBoxFront.style.transform = 'rotate(5deg) translateY(-10px)'; // Tilt slightly to the right and move up
 revealBoxFront.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)'; // Add a shadow for the floating effect
 revealBoxFront.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease'; // Smooth transition for hover effect
+revealBoxFront.style.background = 'linear-gradient(135deg, #6a0dad, #ff69b4)'; // Same gradient as the footnote button
+revealBoxFront.style.backgroundSize = '200% 200%'; // Ensure smooth gradient animation
+revealBoxFront.style.color = '#fff'; // Keep the text color white for contrast
+revealBoxFront.style.animation = 'shineEffect 3s linear infinite'; // Add animation if needed
 
 // Add hover effect to enhance the floating appearance
 revealBoxFront.addEventListener('mouseover', () => {
@@ -814,7 +818,7 @@ floatingStyle.textContent = `
 document.head.appendChild(floatingStyle);
 
 // Logic
-const birthday = new Date("2025-05-05T01:15:00");
+const birthday = new Date("2025-04-07T00:00:00");
 
 function createTimeBox(value, label) {
   return `
@@ -901,3 +905,60 @@ if (diff <= 0) {
 const countdownContainer = document.querySelector('.countdown-container');
 countdownContainer.style.padding = '40px 40px'; // Adjust padding
 countdownContainer.style.height = '55vh'; // Adjust height
+
+// Create the footnote button
+const footnoteButton = document.createElement('div');
+footnoteButton.id = 'footnote-button';
+footnoteButton.textContent = '▲ Footnote';
+footnoteButton.style.position = 'fixed';
+footnoteButton.style.bottom = '10px';
+footnoteButton.style.right = '10px';
+footnoteButton.style.cursor = 'pointer';
+footnoteButton.style.fontSize = '0.8rem';
+footnoteButton.style.padding = '4px 8px';
+footnoteButton.style.background = 'linear-gradient(135deg, #6a0dad, #ff69b4)';
+footnoteButton.style.color = '#fff';
+footnoteButton.style.borderRadius = '5px';
+footnoteButton.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)';
+footnoteButton.style.zIndex = '1000';
+footnoteButton.style.transition = 'transform 0.3s ease';
+footnoteButton.style.opacity = '0.5'; // Slightly transparent
+
+// Add hover effect
+footnoteButton.onmouseover = () => footnoteButton.style.transform = 'scale(1.1)';
+footnoteButton.onmouseout = () => footnoteButton.style.transform = 'scale(1)';
+
+// Create the footnote box
+const footnoteBox = document.createElement('div');
+footnoteBox.id = 'footnote-box';
+footnoteBox.style.position = 'fixed';
+footnoteBox.style.bottom = '45px';
+footnoteBox.style.right = '8px';
+footnoteBox.style.width = '250px';
+footnoteBox.style.padding = '10px';
+footnoteBox.style.background = '#fff';
+footnoteBox.style.border = '1px solid #ccc';
+footnoteBox.style.borderRadius = '5px';
+footnoteBox.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)';
+footnoteBox.style.fontSize = '0.8rem';
+footnoteBox.style.color = '#444';
+footnoteBox.style.display = 'none'; // Initially hidden
+footnoteBox.style.zIndex = '1000';
+footnoteBox.style.opacity = '0.5'; // Slightly transparent
+
+// Add footnote content
+footnoteBox.innerHTML = `
+  <ul style="margin: 0; padding: 0 0 0 15px; list-style: disc;">
+    <li>Since i cant give you any physical gift, I made this.</li>
+    </li>
+  </ul>
+`;
+
+// Toggle footnote box visibility on button click
+footnoteButton.addEventListener('click', () => {
+  footnoteBox.style.display = footnoteBox.style.display === 'none' ? 'block' : 'none';
+});
+
+// Append the button and box to the document body
+document.body.appendChild(footnoteButton);
+document.body.appendChild(footnoteBox);
