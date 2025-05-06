@@ -1006,7 +1006,7 @@ sliderOuterContainer.style.borderRadius = '10px'; // Rounded corners
 sliderOuterContainer.style.position = 'relative'; // Position relative for inner slider
 sliderOuterContainer.style.overflow = 'hidden'; // Hide overflow
 sliderOuterContainer.style.margin = '20px auto'; // Center horizontally
-sliderOuterContainer.style.marginTop = '-200px'; //      TO ADJUST TOP OR BOTTOM POSITION ...........
+sliderOuterContainer.style.marginTop = '0px'; //      TO ADJUST TOP OR BOTTOM POSITION ...........
 sliderOuterContainer.style.background = '   #ffffff ';
 
 // Create the slider (inner small rectangle)
