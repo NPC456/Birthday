@@ -106,7 +106,7 @@ style.textContent = `
     animation: floatEmojis 8s ease-in-out infinite;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.4;
+    opacity: 0.3;
   }
 
   @keyframes floatEmojis {
@@ -380,20 +380,8 @@ style.textContent = `
     }
   }
 
-  #ribbon {
-    position: absolute;
-    bottom: 0px; /* Move to the bottom */
-    right: 0px; /* Keep it on the right */
-    font-size: 2rem;
-    opacity: 0;
-    transform: scale(0);
-    transition: all 1s ease;
-  }
 
-  #ribbon.reveal {
-    opacity: 1;
-    transform: scale(2);
-  }
+  //                                               RIBBON
 
   .reveal-box {
     position: relative;
@@ -514,10 +502,9 @@ countdownTitle.style.color = '#ff1493';
 countdownTitle.style.marginTop = '-10px'; // Add spacing below the title
 container.appendChild(countdownTitle);
 
-const ribbon = document.createElement('div');
-ribbon.id = 'ribbon';
-ribbon.textContent = '🎀';
-container.appendChild(ribbon);
+
+//                                constRIBBON
+
 
 const countdownEl = document.createElement('div');
 countdownEl.id = 'countdown';
@@ -557,6 +544,29 @@ nextButton.style.visibility = "hidden"; // Initially hidden but space is reserve
 
 // Append the button to the countdown container
 container.appendChild(nextButton);
+
+// Add the ribbon to the first container
+const ribbon = document.createElement('div');
+ribbon.id = 'ribbon';
+ribbon.textContent = '🎀';
+ribbon.style.position = 'absolute';
+ribbon.style.bottom = '-20px'; // Position at the bottom
+ribbon.style.right = '-20px'; // Position at the right
+ribbon.style.fontSize = '5rem';
+ribbon.style.fontWeight = 'bold';
+ribbon.style.color = '#fff';
+ribbon.style.opacity = '0'; // Initially hidden
+ribbon.style.transform = 'scale(0) rotate(-10deg)'; // Start with scale 0 and tilted
+ribbon.style.transition = 'transform 1s ease, opacity 0.5s ease'; // Smooth transition
+
+// Append the ribbon to the first container
+container.appendChild(ribbon);
+
+// Show the ribbon after the container stabilizes
+setTimeout(() => {
+  ribbon.style.opacity = '1'; // Make it visible
+  ribbon.style.transform = 'scale(1) rotate(-15deg)'; // Zoom in and tilt slightly
+}, 5500); // Delay to match the container's fall and stabilization
 
 // Add event listener to the button
 nextButton.addEventListener("click", () => {
@@ -742,7 +752,7 @@ secondContainerContent.appendChild(additionalText2);
 secondContainerContent.appendChild(additionalText3);
 
 // Floating Emojis behind the page
-const emojis = [,'📔','💖','🥟', '🌟','💠',];
+const emojis = [,'📔','💖','🥟', '🌟','💠','🌸'];
 const emojiWrapper = document.createElement('div');
 emojiWrapper.style.position = 'fixed';
 emojiWrapper.style.top = '0';
@@ -765,6 +775,29 @@ for (let i = 0; i < 15; i++) {
 
   // Add the emoji to the background layer
   emojiWrapper.appendChild(emojiElement);
+}
+
+// Add fixed maple leaves to the background
+const mapleLeaves = ['🍁', '🍂'];
+const mapleLeafWrapper = document.createElement('div');
+mapleLeafWrapper.style.position = 'fixed';
+mapleLeafWrapper.style.top = '0';
+mapleLeafWrapper.style.left = '0';
+mapleLeafWrapper.style.width = '100vw';
+mapleLeafWrapper.style.height = '100vh';
+mapleLeafWrapper.style.zIndex = '0'; // Ensure it's behind everything
+mapleLeafWrapper.style.pointerEvents = 'none'; // Prevent interaction
+document.body.appendChild(mapleLeafWrapper);
+
+for (let i = 0; i < 10; i++) { // Add 10 maple leaves
+  const mapleLeaf = document.createElement('div');
+  mapleLeaf.textContent = mapleLeaves[Math.floor(Math.random() * mapleLeaves.length)];
+  mapleLeaf.style.position = 'absolute';
+  mapleLeaf.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+  mapleLeaf.style.top = `${Math.random() * 100}vh`; // Random vertical position
+  mapleLeaf.style.fontSize = `${Math.random() * 3 + 2}vw`; // Random size between 2vw and 5vw
+  mapleLeaf.style.opacity = '0.7'; // Slight transparency
+  mapleLeafWrapper.appendChild(mapleLeaf);
 }
 
 // Ensure the emoji wrapper stays behind the containers but remains visible
@@ -790,7 +823,7 @@ document.body.appendChild(fixedEmojiLeft);
 const fixedEmojiRight = document.createElement('div');
 fixedEmojiRight.textContent = '✨';
 fixedEmojiRight.style.position = 'fixed';
-fixedEmojiRight.style.right = '10%'; // Fixed position on the right
+fixedEmojiRight.style.right = '15%'; // Fixed position on the right
 fixedEmojiRight.style.top = '12%'; // Center vertically
 fixedEmojiRight.style.fontSize = '10vw'; // Increase size
 fixedEmojiRight.style.transform = 'translateY(-50%)'; // Center alignment
