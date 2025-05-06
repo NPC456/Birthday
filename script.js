@@ -1006,7 +1006,7 @@ sliderOuterContainer.style.borderRadius = '10px'; // Rounded corners
 sliderOuterContainer.style.position = 'relative'; // Position relative for inner slider
 sliderOuterContainer.style.overflow = 'hidden'; // Hide overflow
 sliderOuterContainer.style.margin = '20px auto'; // Center horizontally
-sliderOuterContainer.style.marginTop = '0px'; //      TO ADJUST TOP OR BOTTOM POSITION ...........
+sliderOuterContainer.style.marginTop = '-200px'; //      TO ADJUST TOP OR BOTTOM POSITION ...........
 sliderOuterContainer.style.background = '   #ffffff ';
 
 // Create the slider (inner small rectangle)
@@ -1028,8 +1028,8 @@ sliderInner.textContent = '>>>'; // Text inside the slider
 sliderInner.style.background = 'linear-gradient(135deg, #6a0dad, #ff69b4)'; // Background gradient
 sliderInner.style.color = '#ff1493 '; // Text color
 sliderInner.style.fontWeight = 'bold'; // Bold text
-
 // Add an event listener to handle the sliding action
+
 sliderInner.addEventListener('mousedown', (event) => {
   handleSlideStart(event.clientX);
 });
@@ -1037,6 +1037,26 @@ sliderInner.addEventListener('mousedown', (event) => {
 sliderInner.addEventListener('touchstart', (event) => {
   handleSlideStart(event.touches[0].clientX);
 });
+
+// Add CSS animation for the second container to move right
+const slideRightStyle = document.createElement('style');
+slideRightStyle.textContent = `
+  @keyframes slideRight {
+    0% {
+      transform: translateX(-50%);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(150%);
+      opacity: 0;
+    }
+  }
+
+  .slide-right {
+    animation: slideRight 1s ease forwards;
+  }
+`;
+document.head.appendChild(slideRightStyle);
 
 function handleSlideStart(startX) {
   const sliderWidth = sliderOuterContainer.offsetWidth - sliderInner.offsetWidth;
@@ -1052,6 +1072,11 @@ function handleSlideStart(startX) {
 
     // Move the second container based on the slider's position
     secondContainer.style.transform = `translateX(${sliderPercentage * 100 - 50}%)`;
+
+    // Trigger the animation when the slider reaches 95%
+    if (sliderPercentage >= 0.95) {
+      secondContainer.classList.add('slide-right');
+    }
   };
 
   const onEnd = () => {
