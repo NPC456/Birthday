@@ -1006,7 +1006,7 @@ sliderOuterContainer.style.borderRadius = '10px'; // Rounded corners
 sliderOuterContainer.style.position = 'relative'; // Position relative for inner slider
 sliderOuterContainer.style.overflow = 'hidden'; // Hide overflow
 sliderOuterContainer.style.margin = '20px auto'; // Center horizontally
-sliderOuterContainer.style.marginTop = '0px'; //      TO ADJUST TOP OR BOTTOM POSITION ...........
+sliderOuterContainer.style.marginTop = '-200px'; //      TO ADJUST TOP OR BOTTOM POSITION ...........
 sliderOuterContainer.style.background = '   #ffffff ';
 
 // Create the slider (inner small rectangle)
@@ -1047,10 +1047,11 @@ function handleSlideStart(startX) {
     let newLeft = Math.min(Math.max(0, sliderInner.offsetLeft + deltaX), sliderWidth);
     sliderInner.style.left = `${newLeft}px`;
 
-    // Check if the slider has reached the end
-    if (newLeft >= sliderWidth) {
-      secondContainer.style.animation = 'slideRight 1s forwards';
-    }
+    // Calculate the percentage of the slider's position
+    const sliderPercentage = newLeft / sliderWidth;
+
+    // Move the second container based on the slider's position
+    secondContainer.style.transform = `translateX(${sliderPercentage * 100 - 50}%)`;
   };
 
   const onEnd = () => {
