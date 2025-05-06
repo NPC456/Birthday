@@ -1031,29 +1031,40 @@ sliderInner.style.fontWeight = 'bold'; // Bold text
 
 // Add an event listener to handle the sliding action
 sliderInner.addEventListener('mousedown', (event) => {
-  const startX = event.clientX;
+  handleSlideStart(event.clientX);
+});
+
+sliderInner.addEventListener('touchstart', (event) => {
+  handleSlideStart(event.touches[0].clientX);
+});
+
+function handleSlideStart(startX) {
   const sliderWidth = sliderOuterContainer.offsetWidth - sliderInner.offsetWidth;
 
-  const onMouseMove = (moveEvent) => {
-    const deltaX = moveEvent.clientX - startX;
+  const onMove = (moveEvent) => {
+    const currentX = moveEvent.type === 'mousemove' ? moveEvent.clientX : moveEvent.touches[0].clientX;
+    const deltaX = currentX - startX;
     let newLeft = Math.min(Math.max(0, sliderInner.offsetLeft + deltaX), sliderWidth);
     sliderInner.style.left = `${newLeft}px`;
 
     // Check if the slider has reached the end
     if (newLeft >= sliderWidth) {
-      alert('Under Construction!');
-      window.location.href = 'https://example.com'; // Replace with your desired URL
+      secondContainer.style.animation = 'slideRight 1s forwards';
     }
   };
 
-  const onMouseUp = () => {
-    document.removeEventListener('mousemove', onMouseMove);
-    document.removeEventListener('mouseup', onMouseUp);
+  const onEnd = () => {
+    document.removeEventListener('mousemove', onMove);
+    document.removeEventListener('mouseup', onEnd);
+    document.removeEventListener('touchmove', onMove);
+    document.removeEventListener('touchend', onEnd);
   };
 
-  document.addEventListener('mousemove', onMouseMove);
-  document.addEventListener('mouseup', onMouseUp);
-});
+  document.addEventListener('mousemove', onMove);
+  document.addEventListener('mouseup', onEnd);
+  document.addEventListener('touchmove', onMove);
+  document.addEventListener('touchend', onEnd);
+}
 
 // Append the slider to the outer container
 sliderOuterContainer.appendChild(sliderInner);
