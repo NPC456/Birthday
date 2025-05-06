@@ -966,8 +966,8 @@ footnoteButton.onmouseout = () => footnoteButton.style.transform = 'scale(1)';
 const footnoteBox = document.createElement('div');
 footnoteBox.id = 'footnote-box';
 footnoteBox.style.position = 'fixed';
-footnoteBox.style.bottom = '45px';
-footnoteBox.style.right = '8px';
+footnoteBox.style.bottom = '55vw';
+footnoteBox.style.right = '15vw';
 footnoteBox.style.width = '250px';
 footnoteBox.style.padding = '10px';
 footnoteBox.style.background = '#fff';
@@ -996,3 +996,67 @@ footnoteButton.addEventListener('click', () => {
 // Append the button and box to the document body
 document.body.appendChild(footnoteButton);
 document.body.appendChild(footnoteBox);
+
+// Create the slider container (outer square rectangle)
+const sliderOuterContainer = document.createElement('div');
+sliderOuterContainer.style.width = '300px'; // Width of the square rectangle
+sliderOuterContainer.style.height = '40px'; // Height of the square rectangle
+sliderOuterContainer.style.border = '2px solid #ff1493'; // Border color
+sliderOuterContainer.style.borderRadius = '10px'; // Rounded corners
+sliderOuterContainer.style.position = 'relative'; // Position relative for inner slider
+sliderOuterContainer.style.overflow = 'hidden'; // Hide overflow
+sliderOuterContainer.style.margin = '20px auto'; // Center horizontally
+sliderOuterContainer.style.marginTop = '70px'; //      TO ADJUST TOP OR BOTTOM POSITION ...........
+sliderOuterContainer.style.background = '   #ffffff ';
+
+// Create the slider (inner small rectangle)
+const sliderInner = document.createElement('div');
+sliderInner.style.marginTop = '2px';
+sliderInner.style.marginBottom = '-4px';
+sliderInner.style.width = '50px'; // Width of the slider
+sliderInner.style.height = '90%'; // Full height of the outer container
+sliderInner.style.background = '#fff'; // Slider background color
+sliderInner.style.borderRadius = '7px'; // Rounded corners
+sliderInner.style.position = 'absolute'; // Position absolute for sliding
+sliderInner.style.left = '2px'; // Start position
+sliderInner.style.display = 'flex'; // Flexbox for centering text
+sliderInner.style.alignItems = 'center'; // Center text vertically
+sliderInner.style.justifyContent = 'center'; // Center text horizontally
+sliderInner.style.cursor = 'pointer'; // Pointer cursor
+sliderInner.style.transition = 'left 0.3s ease'; // Smooth sliding transition
+sliderInner.textContent = '>>>'; // Text inside the slider
+sliderInner.style.background = 'linear-gradient(135deg, #6a0dad, #ff69b4)'; // Background gradient
+sliderInner.style.color = '#ff1493 '; // Text color
+sliderInner.style.fontWeight = 'bold'; // Bold text
+
+// Add an event listener to handle the sliding action
+sliderInner.addEventListener('mousedown', (event) => {
+  const startX = event.clientX;
+  const sliderWidth = sliderOuterContainer.offsetWidth - sliderInner.offsetWidth;
+
+  const onMouseMove = (moveEvent) => {
+    const deltaX = moveEvent.clientX - startX;
+    let newLeft = Math.min(Math.max(0, sliderInner.offsetLeft + deltaX), sliderWidth);
+    sliderInner.style.left = `${newLeft}px`;
+
+    // Check if the slider has reached the end
+    if (newLeft >= sliderWidth) {
+      alert('Under Construction!');
+      window.location.href = 'https://example.com'; // Replace with your desired URL
+    }
+  };
+
+  const onMouseUp = () => {
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+  };
+
+  document.addEventListener('mousemove', onMouseMove);
+  document.addEventListener('mouseup', onMouseUp);
+});
+
+// Append the slider to the outer container
+sliderOuterContainer.appendChild(sliderInner);
+
+// Append the slider container to the second container
+secondContainer.appendChild(sliderOuterContainer);
