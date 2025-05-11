@@ -464,6 +464,33 @@ style.textContent = `
 document.head.appendChild(style);
 
 
+// Add fixed resolution styles
+const fixedResolutionStyle = document.createElement('style');
+fixedResolutionStyle.textContent = `
+  html, body {
+    width: 720px;
+    height: 1600px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrolling */
+    position: relative;
+  }
+
+  body {
+    transform: scale(1);
+    transform-origin: top left;
+  }
+
+  @media (max-width: 720px), (max-height: 1600px) {
+    body {
+      transform: scale(calc(min(100vw / 720, 100vh / 1600)));
+    }
+  }
+`;
+document.head.appendChild(fixedResolutionStyle);
+
+
+
 // Add Google Fonts dynamically
 const fontLink = document.createElement('link');
 fontLink.rel = 'stylesheet';
