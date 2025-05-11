@@ -8,6 +8,8 @@ style.textContent = `
     margin: 0;
     padding: 0;
     height: 100%;
+    width: 100%;
+    overflow: hidden; /* Prevent scrollbars */
     font-family: 'Sour Gummy', sans-serif; /* Default font */
     background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
     background-size: 400% 400%;
