@@ -179,7 +179,7 @@ style.textContent = `
 
   .time-label {
     font-family: 'Leckerli One', cursive; /* Font for time label */
-    font-size: 1.2rem;
+    font-size: 1rem;
     color:rgb(255, 0, 128); /* Change color to pink */
     position: absolute; /* Allow precise positioning */
     bottom: 12%; /* Adjust vertical position upward */
