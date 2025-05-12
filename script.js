@@ -998,4 +998,3 @@ footnoteButton.addEventListener('click', () => {
 // Append the button and box to the document body
 document.body.appendChild(footnoteButton);
 document.body.appendChild(footnoteBox);
-
