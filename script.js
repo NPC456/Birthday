@@ -7,8 +7,8 @@ style.textContent = `
   html, body {
     margin: 0;
     padding: 0;
+    width: 100%; 
     height: 100%;
-    width: 100%;
     overflow: hidden; /* Prevent scrollbars */
     font-family: 'Sour Gummy', sans-serif; /* Default font */
     background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
@@ -199,7 +199,7 @@ style.textContent = `
     }
 
     .time-label {
-      font-size: 1rem; /* Adjust font size for smaller screens */
+      font-size: 1.2rem; /* Adjust font size for smaller screens */
       bottom: 12%; /* Adjust vertical position */
     }
   }
@@ -216,7 +216,7 @@ style.textContent = `
     }
 
     .time-label {
-      font-size: 1rem; /* Adjust font size for very small screens */
+      font-size: 1.2rem; /* Adjust font size for very small screens */
       bottom: 12%; /* Adjust vertical position */
     }
   }
@@ -515,9 +515,26 @@ container.appendChild(countdownEl);
 // Create extra message box
 const extraMessageBox = document.createElement('div');
 extraMessageBox.className = 'extra-message-box';
-extraMessageBox.innerHTML = "Just a little more....<br>a special small gift for You💖";
+extraMessageBox.innerHTML = "Just a little more....<br>Specially for You💖";
 extraMessageBox.style.fontSize = "1rem";
 container.appendChild(extraMessageBox);
+
+// Add animated loading dots below the message box
+const countdownLoadingDots = document.createElement('div');
+countdownLoadingDots.id = 'countdown-loading-dots';
+countdownLoadingDots.style.textAlign = 'center';
+countdownLoadingDots.style.fontSize = '4rem';
+countdownLoadingDots.style.marginTop = '10px';
+countdownLoadingDots.style.color = '#ff1493';
+container.appendChild(countdownLoadingDots);
+
+// Animate the loading dots
+let countdownDots = ['.', '..', '...'];
+let countdownDotIndex = 0;
+setInterval(() => {
+  countdownLoadingDots.textContent = countdownDots[countdownDotIndex];
+  countdownDotIndex = (countdownDotIndex + 1) % countdownDots.length;
+}, 500);
 
 // Create a button below the countdown box
 const nextButton = document.createElement('button');
@@ -679,7 +696,7 @@ revealBox.innerHTML = `
 const revealBoxBack = revealBox.querySelector('.reveal-box-back');
 revealBoxBack.innerHTML = `
   <span style="color: violet;">Just wanted to tell you that- you are my favourite person. Whenever I talk to you my day becomes Better</span><br>
-  <span style="color: #ff1493;">I Hope your birthday is full of Love, Magic and Happiness! which make you smile ❣️</span>
+  <span style="color: #ff1493;">I Hope your birthday is filled with SWEET Fragrance of Love, Magic and Happiness! which make you smile ❣️</span>
 `;
 revealBoxBack.style.background = 'rgb(255, 246, 217)'; 
 // Style the reveal box for flexible positioning and shape
@@ -902,6 +919,7 @@ if (diff <= 0) {
       nextButton.style.visibility = "visible"; // Make the button visible
       setTimeout(() => {
         nextButton.style.opacity = "1"; // Fade in the button
+        countdownLoadingDots.style.display = "none"; // Hide the loading dots
       }, 50); // Small delay to ensure visibility is applied before opacity
     }
   }, 1000);
@@ -917,6 +935,7 @@ if (diff <= 0) {
       nextButton.style.visibility = "visible"; // Make the button visible
       setTimeout(() => {
         nextButton.style.opacity = "1"; // Fade in the button
+        countdownLoadingDots.style.display = "none"; // Hide the loading dots
       }, 50); // Small delay to ensure visibility is applied before opacity
       return;
     }
