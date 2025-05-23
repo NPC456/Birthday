@@ -199,7 +199,7 @@ style.textContent = `
     }
 
     .time-label {
-      font-size: 1.2rem; /* Adjust font size for smaller screens */
+      font-size: 1rem; /* Adjust font size for smaller screens */
       bottom: 12%; /* Adjust vertical position */
     }
   }
@@ -216,7 +216,7 @@ style.textContent = `
     }
 
     .time-label {
-      font-size: 1.2rem; /* Adjust font size for very small screens */
+      font-size: 1rem; /* Adjust font size for very small screens */
       bottom: 12%; /* Adjust vertical position */
     }
   }
