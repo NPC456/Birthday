@@ -123,6 +123,30 @@ style.textContent = `
     }
   }
 
+  @keyframes floatImage {
+    0%   { transform: rotate(-15deg) scale(1); }
+    5%   { transform: rotate(-12deg) scale(1.03); }
+    10%  { transform: rotate(-9deg)  scale(1.06); }
+    15%  { transform: rotate(-6deg)  scale(1.08); }
+    20%  { transform: rotate(-3deg)  scale(1.1); }
+    25%  { transform: rotate(0deg)   scale(1.12); }
+    30%  { transform: rotate(3deg)   scale(1.13); }
+    35%  { transform: rotate(6deg)   scale(1.12); }
+    40%  { transform: rotate(9deg)   scale(1.1); }
+    45%  { transform: rotate(12deg)  scale(1.08); }
+    50%  { transform: rotate(15deg)  scale(1.06); }
+    55%  { transform: rotate(12deg)  scale(1.03); }
+    60%  { transform: rotate(9deg)   scale(1); }
+    65%  { transform: rotate(6deg)   scale(0.97); }
+    70%  { transform: rotate(3deg)   scale(0.94); }
+    75%  { transform: rotate(0deg)   scale(0.92); }
+    80%  { transform: rotate(-3deg)  scale(0.91); }
+    85%  { transform: rotate(-6deg)  scale(0.92); }
+    90%  { transform: rotate(-9deg)  scale(0.94); }
+    95%  { transform: rotate(-12deg) scale(0.97); }
+    100% { transform: rotate(-15deg) scale(1); }
+  }
+
   @media (max-width: 768px) {
     .countdown-container, .second-container {
       width: 90vw; /* Adjust width for smaller screens */
@@ -657,6 +681,7 @@ customImage.alt = 'Custom Image';
 customImage.style.width = '40px'; // Adjust as needed
 customImage.style.borderRadius = '15px'; // Optional: rounded corners
 customImage.style.marginBottom = '-30px'; // Center and add spacing
+customImage.style.animation = 'floatImage 3s ease-in-out infinite'; // Add this line
 customImage.style.display = 'block'; // Ensure it's centered
 secondContainerContent.appendChild(customImage);
 // --- End custom image ---
@@ -759,7 +784,7 @@ const additionalText1 = document.createElement('p');
 additionalText1.textContent = "Wishing you all the happiness in the world!";
 additionalText1.style.fontSize = '0.8rem'; // Reduced font size
 additionalText1.style.textAlign = 'center';
-additionalText1.style.marginTop = '-150px';
+additionalText1.style.marginTop = '-160px';
 additionalText1.style.color = '#ff1493'; // Reddish pink
 
 const additionalText2 = document.createElement('p');
@@ -794,7 +819,7 @@ emojiWrapper.style.pointerEvents = 'none'; // Make sure it doesn't interfere wit
 document.body.appendChild(emojiWrapper);
 
 // Create random floating emojis with more spread
-for (let i = 0; i < 15; i++) {
+for (let i = 0; i < 20; i++) {
   const emojiElement = document.createElement('div');
   emojiElement.classList.add('floating-emoji');
   emojiElement.textContent = emojis[Math.floor(Math.random() * emojis.length)];
