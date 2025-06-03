@@ -528,10 +528,6 @@ countdownTitle.style.color = '#ff1493';
 countdownTitle.style.marginTop = '-10px'; // Add spacing below the title
 container.appendChild(countdownTitle);
 
-
-//                                constRIBBON
-
-
 const countdownEl = document.createElement('div');
 countdownEl.id = 'countdown';
 container.appendChild(countdownEl);
@@ -609,7 +605,7 @@ container.appendChild(ribbon);
 setTimeout(() => {
   ribbon.style.opacity = '1'; // Make it visible
   ribbon.style.transform = 'scale(1) rotate(-15deg)'; // Zoom in and tilt slightly
-}, 5500); // Delay to match the container's fall and stabilization
+}, 6500); // Delay to match the container's fall and stabilization
 
 // Add event listener to the button
 nextButton.addEventListener("click", () => {
@@ -682,7 +678,7 @@ customImage.style.width = '40px'; // Adjust as needed
 customImage.style.borderRadius = '15px'; // Optional: rounded corners
 customImage.style.marginBottom = '-30px'; // Center and add spacing
 customImage.style.animation = 'floatImage 3s ease-in-out infinite'; // Add this line
-customImage.style.display = 'block'; // Ensure it's centered
+customImage.style.display = 'none'; // <-- Hide by default
 secondContainerContent.appendChild(customImage);
 // --- End custom image ---
 
@@ -781,9 +777,11 @@ revealBox.addEventListener('click', () => {
   if (revealBox.classList.contains('flipped')) {
     additionalTextsContainer.style.opacity = '1';
     additionalTextsContainer.style.pointerEvents = 'auto';
+    customImage.style.display = 'block'; // <-- Show gift when revealed
   } else {
     additionalTextsContainer.style.opacity = '0';
     additionalTextsContainer.style.pointerEvents = 'none';
+    customImage.style.display = 'none'; // <-- Hide gift if flipped back
   }
 });
 
@@ -924,8 +922,8 @@ floatingStyle.textContent = `
 `;
 document.head.appendChild(floatingStyle);
 
-// Logic
-const birthday = new Date("2025-06-03T23:00:00");
+// countdown
+const birthday = new Date("2025-06-03T00:00:00");
 
 function createTimeBox(value, label) {
   return `
