@@ -650,6 +650,23 @@ secondContainerContent.style.textAlign = 'center';
 secondContainerContent.style.padding = '5%'; // Use percentage for padding
 secondContainerContent.style.lineHeight = '1.5'; // Adjust line height for readability
 
+// --- Add your custom image here ---
+const customImage = document.createElement('img');
+customImage.src = './birthday-gift.jpg'; // Use your local image file name
+customImage.alt = 'Custom Image';
+customImage.style.width = '40px'; // Adjust as needed
+customImage.style.borderRadius = '15px'; // Optional: rounded corners
+customImage.style.position = 'absolute';
+customImage.style.left = '20px'; // Distance from the left edge
+customImage.style.bottom = '20px'; // Distance from the bottom edge
+customImage.style.display = 'block';
+customImage.style.zIndex = '10';
+
+// Make sure the parent is positioned relative
+secondContainer.style.position = 'relative';
+secondContainerContent.appendChild(customImage);
+// --- End custom image ---
+
 // Add "Happy Birthday!" text
 const happyBirthdayText = document.createElement('h1');
 happyBirthdayText.textContent = "Happy Birthday!";
@@ -871,7 +888,7 @@ floatingStyle.textContent = `
 document.head.appendChild(floatingStyle);
 
 // Logic
-const birthday = new Date("2025-06-07T00:00:00");
+const birthday = new Date("2025-06-03T00:00:00");
 
 function createTimeBox(value, label) {
   return `
