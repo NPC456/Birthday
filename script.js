@@ -656,7 +656,7 @@ customImage.src = './birthday-gift.jpg'; // Use your local image file name
 customImage.alt = 'Custom Image';
 customImage.style.width = '40px'; // Adjust as needed
 customImage.style.borderRadius = '15px'; // Optional: rounded corners
-customImage.style.marginBottom = '-20px'; // Center and add spacing
+customImage.style.marginBottom = '-30px'; // Center and add spacing
 customImage.style.display = 'block'; // Ensure it's centered
 secondContainerContent.appendChild(customImage);
 // --- End custom image ---
