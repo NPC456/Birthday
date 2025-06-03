@@ -777,34 +777,52 @@ secondContainerContent.appendChild(revealBox);
 // Add event listener for the flip animation
 revealBox.addEventListener('click', () => {
   revealBox.classList.toggle('flipped');
+  // Fade in/out the additional texts based on flip state
+  if (revealBox.classList.contains('flipped')) {
+    additionalTextsContainer.style.opacity = '1';
+    additionalTextsContainer.style.pointerEvents = 'auto';
+  } else {
+    additionalTextsContainer.style.opacity = '0';
+    additionalTextsContainer.style.pointerEvents = 'none';
+  }
 });
 
-// Add additional texts below the reveal box
+// Add additional texts below the reveal box (wrap in a container)
+const additionalTextsContainer = document.createElement('div');
+additionalTextsContainer.id = 'additional-texts';
+// Start hidden and transparent, but keep in layout for transition
+additionalTextsContainer.style.opacity = '0';
+additionalTextsContainer.style.transition = 'opacity 0.8s ease';
+additionalTextsContainer.style.pointerEvents = 'none'; // Prevent interaction when hidden
+
 const additionalText1 = document.createElement('p');
 additionalText1.textContent = "Wishing you all the happiness in the world!";
-additionalText1.style.fontSize = '0.8rem'; // Reduced font size
+additionalText1.style.fontSize = '0.8rem';
 additionalText1.style.textAlign = 'center';
 additionalText1.style.marginTop = '-160px';
-additionalText1.style.color = '#ff1493'; // Reddish pink
+additionalText1.style.color = '#ff1493';
 
 const additionalText2 = document.createElement('p');
 additionalText2.textContent = "May your day be filled with love, laughter, and joy, And every wish you make may come true.";
-additionalText2.style.fontSize = '0.8rem'; // Reduced font size
+additionalText2.style.fontSize = '0.8rem';
 additionalText2.style.textAlign = 'center';
 additionalText2.style.marginTop = '0';
-additionalText2.style.color = 'violet'; // Violet (purple)
+additionalText2.style.color = 'violet';
 
 const additionalText3 = document.createElement('p');
 additionalText3.textContent = "You Deserve a lot and I'll be here to remind you of that 🫶";
-additionalText3.style.fontSize = '0.8rem'; // Reduced font size
+additionalText3.style.fontSize = '0.8rem';
 additionalText3.style.textAlign = 'center';
 additionalText3.style.marginTop = '0';
-additionalText3.style.color = '#ff1493'; // Reddish pink
+additionalText3.style.color = '#ff1493';
 
-// Append the texts to the second container content
-secondContainerContent.appendChild(additionalText1);
-secondContainerContent.appendChild(additionalText2);
-secondContainerContent.appendChild(additionalText3);
+// Append the texts to the container
+additionalTextsContainer.appendChild(additionalText1);
+additionalTextsContainer.appendChild(additionalText2);
+additionalTextsContainer.appendChild(additionalText3);
+
+// Append the container to the second container content
+secondContainerContent.appendChild(additionalTextsContainer);
 
 // Floating Emojis behind the page
 const emojis = [,'📔','💖','🥟', '🌟','💠','🌸'];
@@ -907,7 +925,7 @@ floatingStyle.textContent = `
 document.head.appendChild(floatingStyle);
 
 // Logic
-const birthday = new Date("2025-06-03T00:00:00");
+const birthday = new Date("2025-06-03T23:00:00");
 
 function createTimeBox(value, label) {
   return `
