@@ -871,7 +871,7 @@ floatingStyle.textContent = `
 document.head.appendChild(floatingStyle);
 
 // Logic
-const birthday = new Date("2025-06-07T00:00:00");
+const birthday = new Date("2025-06-03T20:00:00");
 
 function createTimeBox(value, label) {
   return `
