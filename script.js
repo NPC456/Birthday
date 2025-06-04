@@ -935,7 +935,7 @@ floatingStyle.textContent = `
 document.head.appendChild(floatingStyle);
 
 // countdown
-const birthday = new Date("2025-06-04T21:35:00");
+const birthday = new Date("2025-06-04T21:50:00");
 
 function createTimeBox(value, label) {
   return `
