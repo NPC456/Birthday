@@ -1130,11 +1130,16 @@ bookContainer.innerHTML = `
           pointer-events: none;
         ">2</div>
         <div id="right-page-content">
-          <h2 style="color:#333; margin-bottom:10px;">For You</h2>
-          <p id="right-page-text" style="font-size:1.1rem; color:#444;">
-            May your year be filled with magic, laughter, and love.<br>
+          <h2 style="color:#333; margin-bottom:10px;">Favourites</h2>
+          <ul style="font-size:0.8rem; color:#444; text-align:left; margin:0 0 0 1.2em; padding:0;">
+            <li>Her favourite Place is 'Saraswati Ghat'.</li>
+            <li>Favourite thing is her 'Teddy'.</li>
+            <li>Favourite food is 'Momos'. <span style="font-size:0.9em; color:#888;">(somehow dal chawal too....)</span></li>
+            <li>She Loves BOOKS, especially those by "Aan Huang".</li>
+          </ul>
+          <div style="text-align:center; margin-top:8px;">
             <span style="font-size:2rem;">💖✨</span>
-          </p>
+          </div>
         </div>
         <div id="right-page-arrow" style="
           position: absolute;
@@ -1261,6 +1266,14 @@ customImage.addEventListener('click', () => {
     // Show open book after 0.5s
     setTimeout(() => {
       bookContainer.classList.add('show');
+      // --- Add this block to update book content on first show ---
+      leftPageNumber.textContent = bookPages[bookPageSetIndex].left.number;
+      leftPageContent.innerHTML = bookPages[bookPageSetIndex].left.html;
+      leftPageContent.parentElement.appendChild(leftPageArrow); // Keep arrow if needed
+      rightPageNumber.textContent = bookPages[bookPageSetIndex].right.number;
+      rightPageContent.innerHTML = bookPages[bookPageSetIndex].right.html;
+      updateArrows();
+      // -----------------------------------------------------------
     }, 100);
   }, 500);
 });
@@ -1270,19 +1283,23 @@ const bookPages = [
   {
     left: {
       number: 1,
-      html: `<h2 style="color:#333; margin-bottom:10px;">A Little Note</h2>
-        <p style="font-size:1.1rem; color:#444;">
-          You are the story I want to read again and again.<br>
-          Thank you for being you. Happy Birthday!
-        </p>`
+      html: `<h1 style="color:rgb(50, 0, 0); font-size:1.8rem; margin-bottom:8px; font-family:'Pacifico',cursive;">
+        <br>Things I Know About Her
+      </h1>`
     },
     right: {
       number: 2,
-      html: `<h2 style="color:#333; margin-bottom:10px;">For You</h2>
-        <p id="right-page-text" style="font-size:1.1rem; color:#444;">
-          May your year be filled with magic, laughter, and love.<br>
+      html: `<h2 style="color:#333; margin-bottom:10px;">Favourites</h2>
+        <ul style="font-size:0.8rem; color:#444; text-align:left; margin:0 0 0 1.2em; padding:0;">
+          <li>She Loves BOOKS, especially those by "Aan Huang".</li>
+          <li>Her favourite Place is 'Saraswati Ghat'.</li>
+          <li>Favourite thing is her 'Teddy'.</li>
+          <li>Favourite food is 'Momos'. <span style="font-size:0.9em; color:#888;">(somehow dal chawal too....)</span></li>
+          <li>Prefers Kurkure over Lays.</li>
+        </ul>
+        <div style="text-align:center; margin-top:8px;">
           <span style="font-size:2rem;">💖✨</span>
-        </p>`
+        </div>`
     }
   },
   {
@@ -1296,17 +1313,19 @@ const bookPages = [
     },
     right: {
       number: 4,
-      html: `<h2 style="color:#333; margin-bottom:10px;">Keep Smiling</h2>
-        <p id="right-page-text" style="font-size:1.1rem; color:#444;">
-          Keep smiling and shining bright!<br>
+      html: `<h2 style="color:#333; margin-bottom:10px;">Her Skills:</h2>
+        <ol style="font-size:0.8rem; color:#444; text-align:left; margin:0 0 0 1.2em; padding:0;">
+          <li>A Cutie at her finest
+        </ol>
+        <div style="text-align:center; margin-top:8px;">
           <span style="font-size:2rem;">😊🌟</span>
-        </p>`
+        </div>`
     }
   },
   {
     left: {
       number: 5,
-      html: `<h2 style="color:#333; margin-bottom:10px;">More Joy</h2>
+      html: `<h2 style="color:#333; margin-bottom:10px;"></h2>
         <p style="font-size:1.1rem; color:#444;">
           Wishing you endless joy and sweet moments.<br>
           <span style="font-size:2rem;">🍰🎉</span>
@@ -1405,4 +1424,3 @@ leftPageArrow.addEventListener('click', () => {
 
 // Call this after initial render to set correct arrow state:
 updateArrows();
-
