@@ -1283,13 +1283,13 @@ const bookPages = [
   {
     left: {
       number: 1,
-      html: `<h1 style="color:rgb(50, 0, 0); font-size:1.8rem; margin-bottom:8px; font-family:'Pacifico',cursive;">
+      html: `<h1 style="color:rgb(63, 35, 18); font-size:1.8rem; margin-bottom:8px; font-family:'Pacifico',cursive;">
         <br>Things I Know About Her
       </h1>`
     },
     right: {
       number: 2,
-      html: `<h2 style="color:#333; margin-bottom:10px; text-decoration: underline;">Favourites</h2>
+      html: `<h2 style="color:rgb(224, 29, 87); margin-bottom:10px; text-decoration: underline;">Favourites</h2>
         <ul style="font-size:0.8rem; color:#444; text-align:left; margin:0 0 0 1.2em; padding:0;">
           <li>She Loves BOOKS, especially those by "Aan Huang".</li>
           <li>Her favourite Place is 'Saraswati Ghat'.</li>
@@ -1323,7 +1323,7 @@ const bookPages = [
     },
     right: {
       number: 4,
-      html: `<h2 style="color:#333; margin-bottom:10px;">Her Skills:</h2>
+      html: `<h2 style="color:#333; margin-bottom:10px;"><b>Her Skills:</b></h2>
   <ol style="font-size:0.8rem; color:#444; text-align:left; margin:0 0 0 1.2em; padding:0;">
     <li> A Cutie at her Finest</li>
     <li> Choreographer of her own dance moves</li>
@@ -1342,20 +1342,30 @@ const bookPages = [
   {
     left: {
       number: 5,
-      html: `<h2 style="color:#333; margin-bottom:10px;">Things she hates ;-;</h2>
-        <p style="font-size:1.1rem; color:#444;">
-          Hates it when someone stops the music while she is cooking.<br>
-          Cheating.
-
-          <span style="font-size:2rem;">🍰🎉</span>
-        </p>`
+      html: `<h2 style="color:rgb(61, 125, 244); margin-bottom:10px;"><b>Things she hates ;-;</b></h2>
+        <p style="font-size:0.9rem; color:rgb(15, 190, 187);">
+          Hates it when someone stops the music while she is cooking.</p>
+          <p style="font-size:1.1rem;">Cheating. </p>
+          <p style="font-size:0.9rem; color:#444;">Skin care (aalsi...)<br><br>??????</p>
+           <div style="position:absolute; bottom:32px; right:14px; font-size:0.5rem; color:#bbb; font-style:italic; pointer-events:none;">(me?🥺)</div>
+          <div style="position:absolute; bottom:4px; right:10px; font-size:1rem;">🍰🎉</div>
+      `
     },
     right: {
       number: 6,
       html: `<h2 style="color:#333; margin-bottom:10px;">She wants to do:-</h2>
+       <ul style="font-size:0.8rem; color:#444; text-align:left; margin:1.5em 0 0 1.2em; padding:0;">
+         <li>(khud nahi pata ise kya chahiye.)</li>
+         <li>Wants to travel the world.</li>
+         <li>Diving.</li>
+         <li>Trekking.</li>
+         <li>Bunjee Jumping.</li>
+         <li>Paragliding again from highest point.</li>
+         <br>
+         <li style="color:rgb(255, 0, 0); font-weight:bold;">ALL ADVENTURES!!!!</li>
+
         <p id="right-page-text" style="font-size:1.1rem; color:#444;">
-          Happy Birthday once again!<br>
-          <span style="font-size:2rem;">🎂💖</span>
+          <p style="font-size:1rem;">🎂💖</p>
         </p>`
     }
   }
