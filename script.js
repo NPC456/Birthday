@@ -485,6 +485,10 @@ style.textContent = `
     text-align: center;
     padding: 15px; /* Ensure proper spacing */
   }
+
+  .second-container.fall-down {
+  animation: fallDown 1s forwards;
+  } 
 `;
 
 document.head.appendChild(style);
@@ -680,6 +684,15 @@ customImage.style.marginBottom = '-30px'; // Center and add spacing
 customImage.style.animation = 'floatImage 3s ease-in-out infinite'; // Add this line
 customImage.style.display = 'none'; // <-- Hide by default
 secondContainerContent.appendChild(customImage);
+
+// Make the image act as a button to trigger fall-down animation
+customImage.style.cursor = 'pointer'; // Show pointer on hover/tap
+customImage.addEventListener('click', () => {
+  secondContainer.classList.add('fall-down');
+   setTimeout(() => {
+    secondContainer.style.display = 'none';
+  }, 1000); // Match the animation duration
+});
 // --- End custom image ---
 
 // Add "Happy Birthday!" text
@@ -1069,3 +1082,44 @@ footnoteButton.addEventListener('click', () => {
 // Append the button and box to the document body
 document.body.appendChild(footnoteButton);
 document.body.appendChild(footnoteBox);
+
+// 1. Create the third container (hidden by default)
+const thirdContainer = document.createElement('div');
+thirdContainer.className = 'third-container';
+thirdContainer.id = 'third-container';
+thirdContainer.style.position = 'absolute';
+thirdContainer.style.top = '-100%'; // Start above the viewport
+thirdContainer.style.left = '50%';
+thirdContainer.style.transform = 'translate(-50%, -50%)';
+thirdContainer.style.background = 'white';
+thirdContainer.style.borderRadius = '20px';
+thirdContainer.style.padding = '5vw';
+thirdContainer.style.height = '50vh';
+thirdContainer.style.width = '80vw';
+thirdContainer.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.2)';
+thirdContainer.style.opacity = '0';
+thirdContainer.style.transition = 'none';
+thirdContainer.style.zIndex = '3'; // Above the other containers
+document.body.appendChild(thirdContainer);
+
+// 2. Add CSS for animation (reuse .show and @keyframes fallAndBounce)
+const thirdContainerStyle = document.createElement('style');
+thirdContainerStyle.textContent = `
+  .third-container.show {
+    opacity: 1;
+    animation: fallAndBounce 2.2s cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
+  }
+`;
+document.head.appendChild(thirdContainerStyle);
+
+// 3. Show the third container after the second falls down
+customImage.addEventListener('click', () => {
+  secondContainer.classList.add('fall-down');
+  setTimeout(() => {
+    secondContainer.style.display = 'none';
+    // Show third container after 0.5s
+    setTimeout(() => {
+      thirdContainer.classList.add('show');
+    }, 100); //duration
+  }, 500); //animation duration
+});
