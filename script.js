@@ -406,7 +406,6 @@ style.textContent = `
     }
   }
 
-
   //                                               RIBBON
 
   .reveal-box {
@@ -492,7 +491,6 @@ style.textContent = `
 `;
 
 document.head.appendChild(style);
-
 
 // Add Google Fonts dynamically
 const fontLink = document.createElement('link');
@@ -838,7 +836,7 @@ secondContainerContent.appendChild(additionalTextsContainer);
 // Floating Emojis behind the page
 const emojis = [,'📔','💖','🥟', '🌟','💠','🌸'];
 const emojiWrapper = document.createElement('div');
-emojiWrapper.style.position = 'fixed';
+emojiWrapper.style.position =
 emojiWrapper.style.top = '0';
 emojiWrapper.style.left = '0';
 emojiWrapper.style.width = '100vw';
@@ -1095,27 +1093,60 @@ bookContainer.style.opacity = '0';
 bookContainer.style.transition = 'none';
 bookContainer.style.zIndex = '3'; // Above the other containers
 
-// Book HTML structure
+// Book HTML structure with flipable pages
 bookContainer.innerHTML = `
   <div class="book" style="position:relative;">
     <div class="book-cover"></div>
-    <div class="book-page book-left">
-      <div class="book-content">
-        <h2 style="color:#333; margin-bottom:10px;">A Little Note</h2>
-        <p style="font-size:1.1rem; color:#444;">
-          You are the story I want to read again and again.<br>
-          Thank you for being you. Happy Birthday!
-        </p>
+    <div class="book-page book-left book-flip" id="book-page-left">
+      <div class="book-content" style="height:100%;position:relative;">
+        <div class="book-page-number" id="left-page-number" style="
+          position: absolute;
+          top: 10px;
+          left: 20px;
+          font-size: 0.9rem;
+          color: #bdbdbd;
+          z-index: 10;
+          pointer-events: none;
+        ">1</div>
+        <div id="left-page-content">
+          <h2 style="color:#333; margin-bottom:10px;">A Little Note</h2>
+          <p style="font-size:1.1rem; color:#444;">
+            You are the story I want to read again and again.<br>
+            Thank you for being you. Happy Birthday!
+          </p>
+        </div>
       </div>
     </div>
     <div class="book-spine"></div>
-    <div class="book-page book-right">
-      <div class="book-content">
-        <h2 style="color:#333; margin-bottom:10px;">For You</h2>
-        <p style="font-size:1.1rem; color:#444;">
-          May your year be filled with magic, laughter, and love.<br>
-          <span style="font-size:2rem;">💖✨</span>
-        </p>
+    <div class="book-page book-right book-flip" id="book-page-right">
+      <div class="book-content" style="height:100%;position:relative;">
+        <div class="book-page-number" id="right-page-number" style="
+          position: absolute;
+          top: 10px;
+          right: 20px;
+          font-size: 0.9rem;
+          color: #bdbdbd;
+          z-index: 10;
+          pointer-events: none;
+        ">2</div>
+        <div id="right-page-content">
+          <h2 style="color:#333; margin-bottom:10px;">For You</h2>
+          <p id="right-page-text" style="font-size:1.1rem; color:#444;">
+            May your year be filled with magic, laughter, and love.<br>
+            <span style="font-size:2rem;">💖✨</span>
+          </p>
+        </div>
+        <div id="right-page-arrow" style="
+          position: absolute;
+          bottom: 10px;
+          right: 20px;
+          font-size: 2rem;
+          color: #b97a56;
+          cursor: pointer;
+          user-select: none;
+          transition: transform 0.2s;
+          z-index: 10;
+        " title="Next">&#8594;</div>
       </div>
     </div>
   </div>
@@ -1233,3 +1264,145 @@ customImage.addEventListener('click', () => {
     }, 100);
   }, 500);
 });
+
+// Book page content arrays
+const bookPages = [
+  {
+    left: {
+      number: 1,
+      html: `<h2 style="color:#333; margin-bottom:10px;">A Little Note</h2>
+        <p style="font-size:1.1rem; color:#444;">
+          You are the story I want to read again and again.<br>
+          Thank you for being you. Happy Birthday!
+        </p>`
+    },
+    right: {
+      number: 2,
+      html: `<h2 style="color:#333; margin-bottom:10px;">For You</h2>
+        <p id="right-page-text" style="font-size:1.1rem; color:#444;">
+          May your year be filled with magic, laughter, and love.<br>
+          <span style="font-size:2rem;">💖✨</span>
+        </p>`
+    }
+  },
+  {
+    left: {
+      number: 3,
+      html: `<h2 style="color:#333; margin-bottom:10px;">A Wish</h2>
+        <p style="font-size:1.1rem; color:#444;">
+          You are truly special and deserve all the happiness.<br>
+          <span style="font-size:2rem;">🌸🎈</span>
+        </p>`
+    },
+    right: {
+      number: 4,
+      html: `<h2 style="color:#333; margin-bottom:10px;">Keep Smiling</h2>
+        <p id="right-page-text" style="font-size:1.1rem; color:#444;">
+          Keep smiling and shining bright!<br>
+          <span style="font-size:2rem;">😊🌟</span>
+        </p>`
+    }
+  },
+  {
+    left: {
+      number: 5,
+      html: `<h2 style="color:#333; margin-bottom:10px;">More Joy</h2>
+        <p style="font-size:1.1rem; color:#444;">
+          Wishing you endless joy and sweet moments.<br>
+          <span style="font-size:2rem;">🍰🎉</span>
+        </p>`
+    },
+    right: {
+      number: 6,
+      html: `<h2 style="color:#333; margin-bottom:10px;">Final Wish</h2>
+        <p id="right-page-text" style="font-size:1.1rem; color:#444;">
+          Happy Birthday once again!<br>
+          <span style="font-size:2rem;">🎂💖</span>
+        </p>`
+    }
+  }
+];
+
+// Set up page state
+let bookPageSetIndex = 0;
+
+// Get DOM elements for dynamic update
+const leftPageNumber = bookContainer.querySelector('#left-page-number');
+const rightPageNumber = bookContainer.querySelector('#right-page-number');
+const leftPageContent = bookContainer.querySelector('#left-page-content');
+const rightPageContent = bookContainer.querySelector('#right-page-content');
+const rightPageArrow = bookContainer.querySelector('#right-page-arrow');
+
+// Create the left/back arrow (for left page)
+const leftPageArrow = document.createElement('div');
+leftPageArrow.id = 'left-page-arrow';
+leftPageArrow.innerHTML = '&#8592;';
+leftPageArrow.title = 'Back';
+leftPageArrow.style.position = 'absolute';
+leftPageArrow.style.bottom = '10px';
+leftPageArrow.style.left = '20px';
+leftPageArrow.style.fontSize = '2rem';
+leftPageArrow.style.color = '#b97a56';
+leftPageArrow.style.cursor = 'pointer';
+leftPageArrow.style.userSelect = 'none';
+leftPageArrow.style.transition = 'transform 0.2s';
+leftPageArrow.style.zIndex = '10';
+leftPageArrow.style.display = 'none'; // Hidden by default
+
+// Add the left arrow to the left page content container
+leftPageContent.parentElement.appendChild(leftPageArrow);
+
+// Helper to update arrows visibility
+function updateArrows() {
+  // Show back arrow only on page sets 1 and 2 (pages 3/4 and 5/6)
+  if (bookPageSetIndex === 1 || bookPageSetIndex === 2) {
+    leftPageArrow.style.display = 'block';
+  } else {
+    leftPageArrow.style.display = 'none';
+  }
+  // Show right arrow only if not last page set
+  if (bookPageSetIndex < bookPages.length - 1) {
+    if (!rightPageContent.contains(rightPageArrow)) rightPageContent.appendChild(rightPageArrow);
+    rightPageArrow.style.display = 'block';
+  } else {
+    rightPageArrow.style.display = 'none';
+  }
+}
+
+// Update this in your rightPageArrow click handler:
+rightPageArrow.addEventListener('click', () => {
+  if (bookPageSetIndex < bookPages.length - 1) {
+    bookPageSetIndex++;
+    // Update left page
+    leftPageNumber.textContent = bookPages[bookPageSetIndex].left.number;
+    leftPageContent.innerHTML = bookPages[bookPageSetIndex].left.html;
+    leftPageContent.parentElement.appendChild(leftPageArrow); // Re-append to keep it fixed
+    // Update right page
+    rightPageNumber.textContent = bookPages[bookPageSetIndex].right.number;
+    rightPageContent.innerHTML = bookPages[bookPageSetIndex].right.html;
+    updateArrows();
+    rightPageArrow.style.transform = 'scale(1.3)';
+    setTimeout(() => rightPageArrow.style.transform = 'scale(1)', 150);
+  }
+});
+
+// Add this for leftPageArrow click (back):
+leftPageArrow.addEventListener('click', () => {
+  if (bookPageSetIndex > 0) {
+    bookPageSetIndex--;
+    // Update left page
+    leftPageNumber.textContent = bookPages[bookPageSetIndex].left.number;
+    leftPageContent.innerHTML = bookPages[bookPageSetIndex].left.html;
+    leftPageContent.parentElement.appendChild(leftPageArrow); // Re-append to keep it fixed
+    // Update right page
+    rightPageNumber.textContent = bookPages[bookPageSetIndex].right.number;
+    rightPageContent.innerHTML = bookPages[bookPageSetIndex].right.html;
+    updateArrows();
+    leftPageArrow.style.transform = 'scale(1.3)';
+    setTimeout(() => leftPageArrow.style.transform = 'scale(1)', 150);
+  }
+});
+
+// Call this after initial render to set correct arrow state:
+updateArrows();
+
