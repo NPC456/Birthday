@@ -895,7 +895,6 @@ const fixedEmojiLeft = document.createElement('div');
 // fixedEmojiLeft.textContent = '💗';
 const heartImg = document.createElement('img');
 heartImg.src = './Heart.png'; // Make sure 'heart.png' exists in your folder
-heartImg.alt = 'Heart';
 heartImg.style.width = '20vw';
 heartImg.style.height = '20vw';
 heartImg.style.display = 'block';
