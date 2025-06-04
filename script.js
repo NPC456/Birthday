@@ -949,7 +949,7 @@ floatingStyle.textContent = `
 document.head.appendChild(floatingStyle);
 
 // countdown
-const birthday = new Date("2025-06-04T00:00:00");
+const birthday = new Date("2025-06-07T00:00:00");
 
 function createTimeBox(value, label) {
   return `
@@ -1421,7 +1421,7 @@ const bookPages = [
       number: 2,
       html: `<h2 style="color:rgb(224, 29, 87); margin-bottom:10px; text-decoration: underline;">Favourites</h2>
         <ul style="font-size:0.8rem; color:#444; text-align:left; margin:0 0 0 1.2em; padding:0;">
-          <li>She Loves BOOKS, especially those by "Aan Huang".</li>
+          <li>She Loves BOOKS, especially those by "Ana Huang".</li>
           <li>Her favourite Place is 'Saraswati Ghat'.</li>
           <li>Favourite thing is her 'Teddy'.</li>
           <li>Favourite food is 'Momos'. <span style="font-size:0.9em; color:#888;">(somehow dal chawal too....)</span></li>
