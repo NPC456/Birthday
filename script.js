@@ -1101,8 +1101,8 @@ bookContainer.innerHTML = `
       <div class="book-content" style="height:100%;position:relative;">
         <div class="book-page-number" id="left-page-number" style="
           position: absolute;
-          top: 10px;
-          left: 20px;
+          top: 2px;      /* Move closer to the very top */
+          left: 6px;     /* Move closer to the very left */
           font-size: 0.9rem;
           color: #bdbdbd;
           z-index: 10;
@@ -1122,8 +1122,8 @@ bookContainer.innerHTML = `
       <div class="book-content" style="height:100%;position:relative;">
         <div class="book-page-number" id="right-page-number" style="
           position: absolute;
-          top: 10px;
-          right: 20px;
+          top: 2px;      /* Move closer to the very top */
+          right: 6px;    /* Move closer to the very right */
           font-size: 0.9rem;
           color: #bdbdbd;
           z-index: 10;
@@ -1289,51 +1289,70 @@ const bookPages = [
     },
     right: {
       number: 2,
-      html: `<h2 style="color:#333; margin-bottom:10px;">Favourites</h2>
+      html: `<h2 style="color:#333; margin-bottom:10px; text-decoration: underline;">Favourites</h2>
         <ul style="font-size:0.8rem; color:#444; text-align:left; margin:0 0 0 1.2em; padding:0;">
           <li>She Loves BOOKS, especially those by "Aan Huang".</li>
           <li>Her favourite Place is 'Saraswati Ghat'.</li>
           <li>Favourite thing is her 'Teddy'.</li>
           <li>Favourite food is 'Momos'. <span style="font-size:0.9em; color:#888;">(somehow dal chawal too....)</span></li>
-          <li>Prefers Kurkure over Lays.</li>
+          <li>Loves to Listen Music on Radio.</li>
+          <br>
+          <p style="font-size:1rem;">
+           💖✨
+          </p>
         </ul>
         <div style="text-align:center; margin-top:8px;">
-          <span style="font-size:2rem;">💖✨</span>
+          <span style="font-size:2rem;"></span>
         </div>`
     }
   },
   {
     left: {
       number: 3,
-      html: `<h2 style="color:#333; margin-bottom:10px;">A Wish</h2>
-        <p style="font-size:1.1rem; color:#444;">
-          You are truly special and deserve all the happiness.<br>
-          <span style="font-size:2rem;">🌸🎈</span>
-        </p>`
+      html: `
+    <ul style="font-size:0.8rem; color:#444; text-align:left; margin:1.5em 0 0 1.2em; padding:0;">
+      <li>Prefers Kurkure over Lays.</li>
+      <li>Her favourite colour is 'Black and White'.</li>
+      <li>Loves Gale and Gloomy weather.</li>
+      <li>Did I mention she loves BOOKS?</li>
+      <li>Finds kids cute.</li>
+      <li>Her favourite person is.......</li>
+    </ul>
+    <div style="position:absolute; bottom:4px; right:10px; font-size:1rem;">🌸🎈</div>
+  `
     },
     right: {
       number: 4,
       html: `<h2 style="color:#333; margin-bottom:10px;">Her Skills:</h2>
-        <ol style="font-size:0.8rem; color:#444; text-align:left; margin:0 0 0 1.2em; padding:0;">
-          <li>A Cutie at her finest
-        </ol>
-        <div style="text-align:center; margin-top:8px;">
-          <span style="font-size:2rem;">😊🌟</span>
-        </div>`
+  <ol style="font-size:0.8rem; color:#444; text-align:left; margin:0 0 0 1.2em; padding:0;">
+    <li> A Cutie at her Finest</li>
+    <li> Choreographer of her own dance moves</li>
+    <li> Book Reader</li>
+    <li> Knows to play Guitar</li>
+    <li> Probably a Good Cook</li>
+    <li> Horn-</li>
+    <li></li>
+    <li style="list-style:none; text-align:left; margin-left:-0.9em;">?.</li>
+    <br>
+    <br>
+     <p style="font-size:1rem;">😊🌟</p>
+  </ol>`
     }
   },
   {
     left: {
       number: 5,
-      html: `<h2 style="color:#333; margin-bottom:10px;"></h2>
+      html: `<h2 style="color:#333; margin-bottom:10px;">Things she hates ;-;</h2>
         <p style="font-size:1.1rem; color:#444;">
-          Wishing you endless joy and sweet moments.<br>
+          Hates it when someone stops the music while she is cooking.<br>
+          Cheating.
+
           <span style="font-size:2rem;">🍰🎉</span>
         </p>`
     },
     right: {
       number: 6,
-      html: `<h2 style="color:#333; margin-bottom:10px;">Final Wish</h2>
+      html: `<h2 style="color:#333; margin-bottom:10px;">She wants to do:-</h2>
         <p id="right-page-text" style="font-size:1.1rem; color:#444;">
           Happy Birthday once again!<br>
           <span style="font-size:2rem;">🎂💖</span>
