@@ -560,7 +560,7 @@ setInterval(() => {
 
 // Create a button below the countdown box
 const nextButton = document.createElement('button');
-nextButton.textContent = "For You ✨▶️";
+nextButton.textContent = "For You 🍀💘";
 nextButton.style.marginTop = "40px";
 nextButton.style.padding = "10px 20px";
 nextButton.style.fontSize = "1rem";
@@ -707,7 +707,7 @@ secondContainerContent.appendChild(happyBirthdayText);
 
 // Add emojis
 const emojisLine = document.createElement('div');
-emojisLine.textContent = "🎉🎂🎁✨💖";
+emojisLine.textContent = "🎉🎂🎁⭐️💖";
 emojisLine.style.fontSize = '4vw'; // Larger font size for emojis
 emojisLine.style.marginBottom = '3%'; // Add more spacing below emojis
 secondContainerContent.appendChild(emojisLine);
@@ -835,7 +835,7 @@ additionalTextsContainer.appendChild(additionalText3);
 secondContainerContent.appendChild(additionalTextsContainer);
 
 // Floating Emojis behind the page
-const emojis = [,'📔','💖','🥟', '🌟','💠','🌸'];
+const emojis = [,'💖','🥟','📒','🌟','🌸','💙'];
 const emojiWrapper = document.createElement('div');
 emojiWrapper.style.position =
 emojiWrapper.style.top = '0';
@@ -892,19 +892,33 @@ secondContainer.style.zIndex = '2'; // Set a higher z-index for the second conta
 
 // Add fixed emojis to the background
 const fixedEmojiLeft = document.createElement('div');
-fixedEmojiLeft.textContent = '💗';
+// fixedEmojiLeft.textContent = '💗';
+const heartImg = document.createElement('img');
+heartImg.src = './heart.png'; // Make sure 'heart.png' exists in your folder
+heartImg.alt = 'Heart';
+heartImg.style.width = '20vw';
+heartImg.style.height = '20vw';
+heartImg.style.display = 'block';
+fixedEmojiLeft.appendChild(heartImg);
 fixedEmojiLeft.style.position = 'fixed';
-fixedEmojiLeft.style.left = '2%'; // Fixed position on the left
-fixedEmojiLeft.style.top = '5%'; // Center vertically
+fixedEmojiLeft.style.left = '5%'; // Fixed position on the left
+fixedEmojiLeft.style.top = '10%'; // Center vertically
 fixedEmojiLeft.style.fontSize = '13vw'; // Increase size
 fixedEmojiLeft.style.transform = 'translateY(-50%)'; // Center alignment
 fixedEmojiLeft.style.zIndex = '0'; // Ensure it's behind other elements
 fixedEmojiLeft.style.pointerEvents = 'none'; // Prevent interaction
-fixedEmojiLeft.style.opacity = '0.5'; // Slightly transparent
+fixedEmojiLeft.style.opacity = '0.7'; // Slightly transparent
 document.body.appendChild(fixedEmojiLeft);
 
 const fixedEmojiRight = document.createElement('div');
-fixedEmojiRight.textContent = '✨';
+// fixedEmojiRight.textContent = '✨';
+const starImg = document.createElement('img');
+starImg.src = './star.png'; // Make sure 'star.png' exists in your folder
+starImg.alt = 'Star';
+starImg.style.width = '15vw';
+starImg.style.height = '15vw';
+starImg.style.display = 'block';
+fixedEmojiRight.appendChild(starImg);
 fixedEmojiRight.style.position = 'fixed';
 fixedEmojiRight.style.right = '15%'; // Fixed position on the right
 fixedEmojiRight.style.top = '12%'; // Center vertically
@@ -935,7 +949,7 @@ floatingStyle.textContent = `
 document.head.appendChild(floatingStyle);
 
 // countdown
-const birthday = new Date("2025-06-07T00:00:00");
+const birthday = new Date("2025-06-04T00:00:00");
 
 function createTimeBox(value, label) {
   return `
@@ -1414,7 +1428,7 @@ const bookPages = [
           <li>Loves to Listen Music on Radio.</li>
           <br>
           <p style="font-size:1rem;">
-           💖✨
+           💖🪙
           </p>
         </ul>
         <div style="text-align:center; margin-top:8px;">
@@ -1463,7 +1477,7 @@ const bookPages = [
           Hates it when someone stops the music while she is cooking.</p>
           <p style="font-size:1.1rem;">Cheating. </p>
           <p style="font-size:0.9rem; color:#444;">Skin care (aalsi...)<br><br>??????</p>
-           <div style="position:absolute; bottom:32px; right:14px; font-size:0.5rem; color:#bbb; font-style:italic; pointer-events:none;">(me?🥺)</div>
+           <div style="position:absolute; bottom:32px; right:14px; font-size:0.35rem; color:#bbb; font-style:italic; pointer-events:none;">(me?🥺)</div>
           <div style="position:absolute; bottom:4px; right:10px; font-size:1rem;">🍰🎉</div>
       `
     },
@@ -1489,7 +1503,7 @@ const bookPages = [
     left: {
       number: 7,
       html: `<h2 style="color:#333; margin-bottom:2px;">Lastly...</h2>
-        <p style="font-size:0.9rem; color:#444;">
+        <p style="font-size:0.7rem; color:#444;">
           She is not a TEA PERSON!!!<br>
           Former Topper....<br>
           Gets sick as fast as a flame meets the breeze...<br>
