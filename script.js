@@ -602,7 +602,7 @@ ribbon.style.opacity = '0'; // Initially hidden
 ribbon.style.transform = 'scale(0) rotate(-10deg)'; // Start with scale 0 and tilted
 ribbon.style.transition = 'transform 1s ease, opacity 0.5s ease'; // Smooth transition
 
-// Append the ribbon to the first container
+// Append the ribbon to the countdown container
 container.appendChild(ribbon);
 
 // Show the ribbon after the container stabilizes
@@ -1083,43 +1083,153 @@ footnoteButton.addEventListener('click', () => {
 document.body.appendChild(footnoteButton);
 document.body.appendChild(footnoteBox);
 
-// 1. Create the third container (hidden by default)
-const thirdContainer = document.createElement('div');
-thirdContainer.className = 'third-container';
-thirdContainer.id = 'third-container';
-thirdContainer.style.position = 'absolute';
-thirdContainer.style.top = '-100%'; // Start above the viewport
-thirdContainer.style.left = '50%';
-thirdContainer.style.transform = 'translate(-50%, -50%)';
-thirdContainer.style.background = 'white';
-thirdContainer.style.borderRadius = '20px';
-thirdContainer.style.padding = '5vw';
-thirdContainer.style.height = '50vh';
-thirdContainer.style.width = '80vw';
-thirdContainer.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.2)';
-thirdContainer.style.opacity = '0';
-thirdContainer.style.transition = 'none';
-thirdContainer.style.zIndex = '3'; // Above the other containers
-document.body.appendChild(thirdContainer);
+// 1. Create the open book container (hidden by default)
+const bookContainer = document.createElement('div');
+bookContainer.className = 'open-book-container';
+bookContainer.id = 'open-book-container';
+bookContainer.style.position = 'absolute';
+bookContainer.style.top = '-100%'; // Start above the viewport
+bookContainer.style.left = '50%';
+bookContainer.style.transform = 'translate(-50%, -50%)';
+bookContainer.style.opacity = '0';
+bookContainer.style.transition = 'none';
+bookContainer.style.zIndex = '3'; // Above the other containers
 
-// 2. Add CSS for animation (reuse .show and @keyframes fallAndBounce)
-const thirdContainerStyle = document.createElement('style');
-thirdContainerStyle.textContent = `
-  .third-container.show {
+// Book HTML structure
+bookContainer.innerHTML = `
+  <div class="book" style="position:relative;">
+    <div class="book-cover"></div>
+    <div class="book-page book-left">
+      <div class="book-content">
+        <h2 style="color:#333; margin-bottom:10px;">A Little Note</h2>
+        <p style="font-size:1.1rem; color:#444;">
+          You are the story I want to read again and again.<br>
+          Thank you for being you. Happy Birthday!
+        </p>
+      </div>
+    </div>
+    <div class="book-spine"></div>
+    <div class="book-page book-right">
+      <div class="book-content">
+        <h2 style="color:#333; margin-bottom:10px;">For You</h2>
+        <p style="font-size:1.1rem; color:#444;">
+          May your year be filled with magic, laughter, and love.<br>
+          <span style="font-size:2rem;">💖✨</span>
+        </p>
+      </div>
+    </div>
+  </div>
+`;
+
+// Append to body
+document.body.appendChild(bookContainer);
+
+// 2. Add CSS for the open book and animation
+const bookStyle = document.createElement('style');
+bookStyle.textContent = `
+  .open-book-container {
+    width: 70vw;
+    max-width: 600px;
+    height: 40vh;
+    max-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    background: none;
+  }
+  .open-book-container.show {
     opacity: 1;
     animation: fallAndBounce 2.2s cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
+    pointer-events: auto;
+  }
+  .book {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    perspective: 1200px;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    position: relative;
+    padding: 0;
+    background: none;
+  }
+  .book-page {
+    width: 44%; /* Decreased from 48% */
+    height: 90%; /* Slightly smaller height */
+    background: #fff;
+    border-radius: 0 0 18px 18px; /* Slight curve at the bottom */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 2vw 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 1s cubic-bezier(0.2,0.7,0.3,1);
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+    position: relative; /* For stacking above cover */
+    z-index: 2;
+  }
+  .book-left {
+    /* Pointy on top-left & bottom-left, curved on right */
+    border-radius: 0 18px 18px 0; /* top-left, top-right, bottom-right, bottom-left */
+    border-right: none;
+    box-shadow: none;
+    border-left: none;
+    margin-left: 6vw; /* Adjust this value for more/less space */
+    margin-right: 0.08vw;
+    }
+  .book-right {
+    /* Pointy on top-right & bottom-right, curved on left */
+    border-radius: 18px 0 0 18px; /* top-left, top-right, bottom-right, bottom-left */
+    border-left: none;
+    box-shadow: none;
+    border-right: none;
+    margin-right: 6vw;
+    margin-left: 0.08vw /* Adjust this value for more/less space */
+  }
+  /* Book cover (background behind pages) */
+  .book-cover {
+    position: absolute;
+    top: -2%;
+    left: 5%;
+    width: 90%;
+    height: 94%;
+    background: #b97a56;
+    border-radius: 12px 12px 12px 12px;
+    box-shadow: 0 8px 24px rgba(80,60,120,0.10);
+    z-index: 1;
+    pointer-events: none;
+    marginleft: 15vw;
+    marginright: 15vw;
+    marginTop: 0;
+    marginBottom: 0;
+  }
+  .book-content {
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    padding: 0 0.5vw;
+  }
+  @media (max-width: 768px) {
+    .open-book-container {
+      width: 95vw;
+      height: 45vh;
+    }
+    .book-content h2 { font-size: 1.2rem; }
+    .book-content p { font-size: 0.95rem; }
   }
 `;
-document.head.appendChild(thirdContainerStyle);
+document.head.appendChild(bookStyle);
 
-// 3. Show the third container after the second falls down
+// 3. Show the open book after the second falls down
 customImage.addEventListener('click', () => {
   secondContainer.classList.add('fall-down');
   setTimeout(() => {
     secondContainer.style.display = 'none';
-    // Show third container after 0.5s
+    // Show open book after 0.5s
     setTimeout(() => {
-      thirdContainer.classList.add('show');
-    }, 100); //duration
-  }, 500); //animation duration
+      bookContainer.classList.add('show');
+    }, 100);
+  }, 500);
 });
