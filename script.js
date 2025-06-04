@@ -676,9 +676,10 @@ secondContainerContent.style.lineHeight = '1.5'; // Adjust line height for reada
 const customImage = document.createElement('img');
 customImage.src = './birthday-gift.jpg'; // Use your local image file name
 customImage.alt = 'Custom Image';
-customImage.style.width = '40px'; // Adjust as needed
+customImage.style.width = '60px'; 
+customImage.style.height = '50px'; // Add this line for consistent aspect ratio
 customImage.style.borderRadius = '15px'; // Optional: rounded corners
-customImage.style.marginBottom = '-30px'; // Center and add spacing
+customImage.style.marginBottom = '-40px'; // Center and add spacing
 customImage.style.animation = 'floatImage 3s ease-in-out infinite'; // Add this line
 customImage.style.display = 'none'; // <-- Hide by default
 secondContainerContent.appendChild(customImage);
@@ -934,7 +935,7 @@ floatingStyle.textContent = `
 document.head.appendChild(floatingStyle);
 
 // countdown
-const birthday = new Date("2025-06-03T00:00:00");
+const birthday = new Date("2025-06-04T21:35:00");
 
 function createTimeBox(value, label) {
   return `
@@ -1029,7 +1030,7 @@ const footnoteButton = document.createElement('div');
 footnoteButton.id = 'footnote-button';
 footnoteButton.textContent = '▲ Footnote';
 footnoteButton.style.position = 'fixed';
-footnoteButton.style.bottom = '20px';
+footnoteButton.style.bottom = '40px';
 footnoteButton.style.right = '20px';
 footnoteButton.style.cursor = 'pointer';
 footnoteButton.style.fontSize = '0.8rem';
@@ -1050,7 +1051,7 @@ footnoteButton.onmouseout = () => footnoteButton.style.transform = 'scale(1)';
 const footnoteBox = document.createElement('div');
 footnoteBox.id = 'footnote-box';
 footnoteBox.style.position = 'fixed';
-footnoteBox.style.bottom = '60px';
+footnoteBox.style.bottom = '70px';
 footnoteBox.style.right = '20px';
 footnoteBox.style.width = '250px';
 footnoteBox.style.padding = '10px';
@@ -1157,7 +1158,122 @@ bookContainer.innerHTML = `
   </div>
 `;
 
-// Append to body
+// 1. Create the END button
+const endButton = document.createElement('button');
+endButton.textContent = 'END';
+endButton.style.position = 'absolute';
+endButton.style.bottom = '18px';
+endButton.style.right = '28px';
+endButton.style.fontWeight = 'bold';
+endButton.style.fontSize = '1rem';
+endButton.style.background = '#fff';
+endButton.style.color = '#b97a56';
+endButton.style.border = '2px solid #b97a56';
+endButton.style.borderRadius = '6px';
+endButton.style.padding = '4px 14px';
+endButton.style.cursor = 'pointer';
+endButton.style.zIndex = '20';
+endButton.style.boxShadow = '0 2px 8px rgba(80,60,120,0.10)';
+endButton.style.transition = 'background 0.2s, color 0.2s, transform 0.2s';
+endButton.style.pointerEvents = 'auto'; // Allow click events on END button
+endButton.onmouseover = () => {
+  endButton.style.background = '#b97a56';
+  endButton.style.color = '#fff';
+  endButton.style.transform = 'scale(1.08)';
+};
+endButton.onmouseout = () => {
+  endButton.style.background = '#fff';
+  endButton.style.color = '#b97a56';
+  endButton.style.transform = 'scale(1)';
+};
+
+// 2. Append the END button to the book cover (after bookContainer.innerHTML)
+const bookCover = bookContainer.querySelector('.book-cover');
+if (bookCover) {
+  bookCover.appendChild(endButton);
+}
+
+// 3. (Optional) Add click event for END button (e.g., close the book with fall-down animation)
+endButton.addEventListener('click', () => {
+  bookContainer.classList.remove('show');
+  bookContainer.style.animation = 'fallDown 1s forwards';
+  setTimeout(() => {
+    bookContainer.style.display = 'none';
+    showRollingCredits();
+  }, 1000); // Match the animation duration
+});
+
+endButton.addEventListener('touchstart', () => {
+  bookContainer.classList.remove('show');
+  bookContainer.style.animation = 'fallDown 1s forwards';
+  setTimeout(() => {
+    bookContainer.style.display = 'none';
+    showRollingCredits();
+  }, 1000);
+});
+
+// Function to show rolling credits
+function showRollingCredits() {
+  // Remove any existing credits
+  const oldCredits = document.getElementById('rolling-credits');
+  if (oldCredits) oldCredits.remove();
+
+  // Create the credits container
+  const credits = document.createElement('div');
+  credits.id = 'rolling-credits';
+  credits.style.position = 'fixed';
+  credits.style.left = '0';
+  credits.style.top = '0';
+  credits.style.width = '100vw';
+  credits.style.height = '100vh';
+  credits.style.background = 'transparent';
+  credits.style.display = 'flex';
+  credits.style.justifyContent = 'center';
+  credits.style.alignItems = 'flex-end';
+  credits.style.zIndex = '99999';
+  credits.style.pointerEvents = 'none';
+
+  // Credit text content
+  credits.innerHTML = `
+    <div id="credits-text" style="
+      font-family: 'Pacifico', cursive;
+      font-size: 2.5rem;
+      color: #b97a56;
+      text-align: center;
+      width: 100vw;
+      line-height: 1.5;
+      font-weight: bold;
+      pointer-events: none;
+      ">
+      <div>Have a Best Day!</div>
+      <div style="font-size:2rem; color:#ff1493;">You are Amazing!</div>
+      <div style="font-size:1.5rem; color:#fa0c68;">Made with 💖 just for you</div>
+      <div style="font-size:1.2rem; color:#888; margin-top:2rem;">— by Your Secret Admirer</div>
+    </div>
+  `;
+
+  document.body.appendChild(credits);
+
+  // Animate the credits text from bottom to top
+  const creditsText = credits.querySelector('#credits-text');
+  creditsText.style.position = 'absolute';
+  creditsText.style.bottom = '-40vh';
+  creditsText.style.left = '50%';
+  creditsText.style.transform = 'translateX(-50%)';
+  creditsText.style.transition = 'bottom 7s linear';
+
+  // Trigger the animation
+  setTimeout(() => {
+    creditsText.style.bottom = '110vh';
+  }, 100); // Small delay to ensure rendering
+
+  // Remove credits after animation
+  setTimeout(() => {
+    credits.remove();
+  }, 7500); // Duration matches the animation
+}
+
+// 2. Append to body
 document.body.appendChild(bookContainer);
 
 // 2. Add CSS for the open book and animation
@@ -1283,7 +1399,7 @@ const bookPages = [
   {
     left: {
       number: 1,
-      html: `<h1 style="color:rgb(63, 35, 18); font-size:1.8rem; margin-bottom:8px; font-family:'Pacifico',cursive;">
+      html: `<h1 style="color:rgb(116, 60, 26); font-size:1.8rem; margin-bottom:8px; font-family:'Pacifico',cursive;">
         <br>Things I Know About Her
       </h1>`
     },
@@ -1314,7 +1430,7 @@ const bookPages = [
       <li>Prefers Kurkure over Lays.</li>
       <li>Her favourite colour is 'Black and White'.</li>
       <li>Loves Gale and Gloomy weather.</li>
-      <li>Did I mention she loves BOOKS?</li>
+      <li>Forgot to say, she loves Music and bOOks.</li>
       <li>Finds kids cute.</li>
       <li>Her favourite person is.......</li>
     </ul>
@@ -1355,7 +1471,7 @@ const bookPages = [
       number: 6,
       html: `<h2 style="color:#333; margin-bottom:10px;">She wants to do:-</h2>
        <ul style="font-size:0.8rem; color:#444; text-align:left; margin:1.5em 0 0 1.2em; padding:0;">
-         <li>(khud nahi pata ise kya chahiye.)</li>
+         <li>(khud nahi pata ise kya chahiye...)</li>
          <li>Wants to travel the world.</li>
          <li>Diving.</li>
          <li>Trekking.</li>
@@ -1364,9 +1480,27 @@ const bookPages = [
          <br>
          <li style="color:rgb(255, 0, 0); font-weight:bold;">ALL ADVENTURES!!!!</li>
 
-        <p id="right-page-text" style="font-size:1.1rem; color:#444;">
-          <p style="font-size:1rem;">🎂💖</p>
+        <p id="right-page-text" style="font-size:1rem; color:#444;">
+          <div style="position:absolute; bottom:4px; left:10px; font-size:1rem;">🎂💖</div>
         </p>`
+    }
+  },
+  {
+    left: {
+      number: 7,
+      html: `<h2 style="color:#333; margin-bottom:10px;">Lastly...</h2>
+        <p style="font-size:1rem; color:#444;">
+          She is not a TEA PERSON!!!<br>
+          Former Topper....<br>
+          Gets sick as fast as a flame meets the breeze...<br>
+          (ATLEAST <span style="color:rgb(255, 157, 0); font-weight:bold; text-shadow:0 1px 6px #ffd6f6;">TAKE GOOD CARE OF YOURSELF!!!!</span>)
+          <br>Did I mention she loves BOOKS?<br>
+          <span style="font-size:1.2rem;">💓</span>
+        </p>`
+    },
+    right: {
+      number: '',
+      html: '' // Empty right page for background only
     }
   }
 ];
@@ -1380,6 +1514,35 @@ const rightPageNumber = bookContainer.querySelector('#right-page-number');
 const leftPageContent = bookContainer.querySelector('#left-page-content');
 const rightPageContent = bookContainer.querySelector('#right-page-content');
 const rightPageArrow = bookContainer.querySelector('#right-page-arrow');
+
+// Get DOM element for the right page (the whole page, not just content)
+const rightPage = bookContainer.querySelector('#book-page-right');
+
+// Helper to update arrows visibility
+function updateArrows() {
+  // Show back arrow only on page sets 1 and 2 (pages 3/4 and 5/6) and on page 7
+  if (bookPageSetIndex === 1 || bookPageSetIndex === 2 || bookPageSetIndex === 3) {
+    leftPageArrow.style.display = 'block';
+  } else {
+    leftPageArrow.style.display = 'none';
+  }
+  // Show right arrow only if not last page set (but show on page 6 for page 7)
+  if (bookPageSetIndex < bookPages.length - 1) {
+    if (!rightPageContent.contains(rightPageArrow)) rightPageContent.appendChild(rightPageArrow);
+    rightPageArrow.style.display = 'block';
+  } else {
+    rightPageArrow.style.display = 'none';
+  }
+  // Hide right page content and the right page itself if on last page set (page 7)
+  if (bookPageSetIndex === bookPages.length - 1) {
+    rightPageContent.innerHTML = '';
+    rightPageNumber.textContent = '';
+    rightPageContent.style.background = '';
+    if (rightPage) rightPage.style.display = 'none'; // <-- Hide the right page
+  } else {
+    if (rightPage) rightPage.style.display = ''; // <-- Show the right page
+  }
+}
 
 // Create the left/back arrow (for left page)
 const leftPageArrow = document.createElement('div');
@@ -1400,23 +1563,6 @@ leftPageArrow.style.display = 'none'; // Hidden by default
 // Add the left arrow to the left page content container
 leftPageContent.parentElement.appendChild(leftPageArrow);
 
-// Helper to update arrows visibility
-function updateArrows() {
-  // Show back arrow only on page sets 1 and 2 (pages 3/4 and 5/6)
-  if (bookPageSetIndex === 1 || bookPageSetIndex === 2) {
-    leftPageArrow.style.display = 'block';
-  } else {
-    leftPageArrow.style.display = 'none';
-  }
-  // Show right arrow only if not last page set
-  if (bookPageSetIndex < bookPages.length - 1) {
-    if (!rightPageContent.contains(rightPageArrow)) rightPageContent.appendChild(rightPageArrow);
-    rightPageArrow.style.display = 'block';
-  } else {
-    rightPageArrow.style.display = 'none';
-  }
-}
-
 // Update this in your rightPageArrow click handler:
 rightPageArrow.addEventListener('click', () => {
   if (bookPageSetIndex < bookPages.length - 1) {
@@ -1428,6 +1574,14 @@ rightPageArrow.addEventListener('click', () => {
     // Update right page
     rightPageNumber.textContent = bookPages[bookPageSetIndex].right.number;
     rightPageContent.innerHTML = bookPages[bookPageSetIndex].right.html;
+
+    // If we're now on the last page set (page 7 left, right empty), clear right page content
+    if (bookPageSetIndex === bookPages.length - 1) {
+      rightPageContent.innerHTML = '';
+      rightPageNumber.textContent = '';
+      rightPageContent.style.background = ''; // Keep background as is
+    }
+
     updateArrows();
     rightPageArrow.style.transform = 'scale(1.3)';
     setTimeout(() => rightPageArrow.style.transform = 'scale(1)', 150);
@@ -1453,3 +1607,21 @@ leftPageArrow.addEventListener('click', () => {
 
 // Call this after initial render to set correct arrow state:
 updateArrows();
+
+// Add this keyframes animation for the book fall-down if not already present
+const bookFallDownStyle = document.createElement('style');
+bookFallDownStyle.textContent = `
+@keyframes fallDown {
+  0% {
+    top: 50%;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    top: 150%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.98);
+  }
+}
+`;
+document.head.appendChild(bookFallDownStyle);
