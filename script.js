@@ -1598,13 +1598,3 @@ bookFallDownStyle.textContent = `
 `;
 document.head.appendChild(bookFallDownStyle);
 
-// Add background music
-const backgroundAudio = document.createElement('audio');
-backgroundAudio.src = './background.mp3'; // Make sure this file exists in your folder
-backgroundAudio.loop = true;
-backgroundAudio.volume = 0.5; // Adjust volume (0.0 to 1.0)
-backgroundAudio.autoplay = false; // Will play after loading screen
-
-// Optionally, add controls for debugging (remove in production)
-backgroundAudio.controls = true;
-// document.body.appendChild(backgroundAudio);
