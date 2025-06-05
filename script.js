@@ -1385,7 +1385,6 @@ const bookPages = [
           <li>Favourite thing is her 'Teddy'.</li>
           <li>Favourite food is 'Momos'. <span style="font-size:0.9em; color:#888;">(somehow dal chawal too....)</span></li>
           <li>Loves to Listen Music on Radio.</li>
-          <br>
           <p style="font-size:1rem;">
            💖🪙
           </p>
@@ -1423,7 +1422,6 @@ const bookPages = [
     <li> Horn-</li>
     <li></li>
     <li style="list-style:none; text-align:left; margin-left:-0.9em;">?.</li>
-    <br>
     <br>
      <p style="font-size:1rem;">😊🌟</p>
   </ol>`
