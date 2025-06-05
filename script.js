@@ -1,6 +1,5 @@
 // Import the generateConfetti function from the package
 import { generateConfetti } from "./vanillaConfetti-main/vanillaConfetti.min.js";
-
 // Create and insert styles
 const style = document.createElement('style');
 style.textContent = `
@@ -598,7 +597,6 @@ nextButton.addEventListener("click", () => {
       maxOpacity: 1,
       infiniteLoop: false
     };
-
     // Call the generateConfetti function with the configuration and canvas ID
     generateConfetti(confettiConfigObj, "vanillaConfettiCanvas");
 
