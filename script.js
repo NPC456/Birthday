@@ -704,6 +704,7 @@ revealBoxBack.style.background = 'rgb(255, 246, 217)';
 // Style the reveal box for flexible positioning and shape
 revealBox.style.margin = '50vw 5vw'; // Center horizontally
 revealBox.style.marginTop = '4%'; // Add spacing from the top
+revealBox.style.marginBottom = '60%'; // Add spacing from the bottom
 revealBox.style.width = '100vw'; // Adjust width
 revealBox.style.maxWidth = '500px'; // Limit maximum width
 revealBox.style.height = '40vw'; // Adjust height
