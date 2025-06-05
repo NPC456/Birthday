@@ -318,17 +318,6 @@ style.textContent = `
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
 
-  .reveal-box-front {
-    background:rgb(250, 198, 250);
-    color: #fff;
-  }
-
-  .reveal-box-back {
-    background:rgb(255, 247, 217);
-    color:rgb(86, 45, 234);
-    transform: rotateX(180deg); /* Flip vertically */
-  }
-
   .reveal-box.flipped .reveal-box-inner {
     transform: rotateX(180deg); /* Flip vertically */
   }
@@ -375,25 +364,6 @@ style.textContent = `
     }
   }
 
-  .reveal-box-front {
-    background: linear-gradient(135deg,rgb(255, 4, 217),rgb(229, 43, 239),rgb(179, 0, 210)); /* Gradient colors */
-    background-size: 200% 200%; /* Larger background for animation */
-    color: #fff;
-    animation: shineEffect 3s linear infinite; /* Add animation */
-  }
-
-  @keyframes shineEffect {
-    0% {
-      background-position: 0% 50%; /* Start position */
-    }
-    50% {
-      background-position: 100% 50%; /* Middle position */
-    }
-    100% {
-      background-position: 0% 50%; /* End position */
-    }
-  }
-
   @keyframes gradientMove {
     0% {
       background-position: 0% 50%;
@@ -405,8 +375,6 @@ style.textContent = `
       background-position: 0% 50%;
     }
   }
-
-  //                                               RIBBON
 
   .reveal-box {
     position: relative;
@@ -439,16 +407,6 @@ style.textContent = `
     font-weight: bold;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
-
-  .reveal-box {
-    position: relative;
-    width: 50vw; /* Set width to 50% of the viewport width */
-    max-width: 400px; /* Set a maximum width for larger screens */
-    height: 25vw; /* Maintain aspect ratio with height */
-    max-height: 200px; /* Set a maximum height */
-    margin: 20px auto;
-    perspective: 1000px; /* Enable 3D perspective */
   }
 
   /* Responsive adjustments for smaller screens */
@@ -633,7 +591,7 @@ nextButton.addEventListener("click", () => {
       ],
       infiniteLoop: false,
       velocity: 0.0005,
-      quantity: 750,
+      quantity: 500,
       minSize: 4,
       maxSize: 12,
       minOpacity: 0.9,
@@ -707,7 +665,7 @@ secondContainerContent.appendChild(happyBirthdayText);
 
 // Add emojis
 const emojisLine = document.createElement('div');
-emojisLine.textContent = "🎉🎂🎁⭐️💖";
+emojisLine.textContent = "🎉🎂🌟🎁💖";
 emojisLine.style.fontSize = '4vw'; // Larger font size for emojis
 emojisLine.style.marginBottom = '3%'; // Add more spacing below emojis
 secondContainerContent.appendChild(emojisLine);
@@ -949,7 +907,7 @@ floatingStyle.textContent = `
 document.head.appendChild(floatingStyle);
 
 // countdown
-const birthday = new Date("2025-06-07T00:00:00");
+const birthday = new Date("2025-06-05T11:05:00");
 
 function createTimeBox(value, label) {
   return `
@@ -1446,6 +1404,7 @@ const bookPages = [
       <li>Loves Gale and Gloomy weather.</li>
       <li>Forgot to say, she loves Music and bOOks.</li>
       <li>Finds kids cute.</li>
+      <li>Fictional MEN...😞
       <li>Her favourite person is.......</li>
     </ul>
     <div style="position:absolute; bottom:4px; right:10px; font-size:1rem;">🌸🎈</div>
@@ -1478,7 +1437,7 @@ const bookPages = [
           <p style="font-size:1.1rem;">Cheating. </p>
           <p style="font-size:0.9rem; color:#444;">Skin care (aalsi...)<br><br>??????</p>
            <div style="position:absolute; bottom:32px; right:14px; font-size:0.35rem; color:#bbb; font-style:italic; pointer-events:none;">(me?🥺)</div>
-          <div style="position:absolute; bottom:4px; right:10px; font-size:1rem;">🍰🎉</div>
+          <div style="position:absolute; bottom:4px; right:10px; font-size:1rem;">🍰📗</div>
       `
     },
     right: {
@@ -1495,7 +1454,7 @@ const bookPages = [
          <li style="color:rgb(255, 0, 0); font-weight:bold;">ALL ADVENTURES!!!!</li>
 
         <p id="right-page-text" style="font-size:1rem; color:#444;">
-          <div style="position:absolute; bottom:4px; left:10px; font-size:1rem;">🎂💖</div>
+          <div style="position:absolute; bottom:4px; left:10px; font-size:1rem;">🧿💖</div>
         </p>`
     }
   },
@@ -1503,7 +1462,7 @@ const bookPages = [
     left: {
       number: 7,
       html: `<h2 style="color:#333; margin-bottom:2px;">Lastly...</h2>
-        <p style="font-size:0.7rem; color:#444;">
+        <p style="font-size:0.8rem; color:#444;">
           She is not a TEA PERSON!!!<br>
           Former Topper....<br>
           Gets sick as fast as a flame meets the breeze...<br>
